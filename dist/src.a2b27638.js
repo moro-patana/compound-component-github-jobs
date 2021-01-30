@@ -35929,14 +35929,24 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Date = exports.Image = exports.Location = exports.Button = exports.SubTitle = exports.Title = exports.Container = void 0;
+exports.Date = exports.Image = exports.Location = exports.Button = exports.SubTitle = exports.Title = exports.History = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _templateObject7() {
+function _templateObject8() {
   var data = _taggedTemplateLiteral([""]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\nwidth: 100%;\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -35946,7 +35956,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\nwidth: 100%;\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -35956,7 +35966,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n border: 1px solid black;\n padding: 1rem;\n background-color: transparent;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -35966,7 +35976,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n border: 1px solid black;\n padding: 1rem;\n background-color: transparent;\n"]);
+  var data = _taggedTemplateLiteral(["\n     margin: 0;\n    font-size: 20px;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -35976,7 +35986,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n     margin: 0;\n    font-size: 20px;\n"]);
+  var data = _taggedTemplateLiteral(["\nfont-size: 20px;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -35986,7 +35996,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\nfont-size: 20px;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    justify-content: flex-end;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -36011,27 +36021,31 @@ var Container = _styledComponents.default.article(_templateObject());
 
 exports.Container = Container;
 
-var Title = _styledComponents.default.h2(_templateObject2());
+var History = _styledComponents.default.div(_templateObject2());
+
+exports.History = History;
+
+var Title = _styledComponents.default.h2(_templateObject3());
 
 exports.Title = Title;
 
-var SubTitle = _styledComponents.default.h3(_templateObject3());
+var SubTitle = _styledComponents.default.h3(_templateObject4());
 
 exports.SubTitle = SubTitle;
 
-var Button = _styledComponents.default.button(_templateObject4());
+var Button = _styledComponents.default.button(_templateObject5());
 
 exports.Button = Button;
 
-var Location = _styledComponents.default.p(_templateObject5());
+var Location = _styledComponents.default.p(_templateObject6());
 
 exports.Location = Location;
 
-var Image = _styledComponents.default.img(_templateObject6());
+var Image = _styledComponents.default.img(_templateObject7());
 
 exports.Image = Image;
 
-var Date = _styledComponents.default.p(_templateObject7());
+var Date = _styledComponents.default.p(_templateObject8());
 
 exports.Date = Date;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/job-list/index.js":[function(require,module,exports) {
@@ -36080,28 +36094,21 @@ JobList.Button = function JobListButton(_ref4) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Button, restProps, children);
 };
 
-JobList.Location = function JobListLocation(_ref5) {
-  var children = _ref5.children,
-      restProps = _objectWithoutProperties(_ref5, ["children"]);
-
-  return /*#__PURE__*/_react.default.createElement(_jobList.Location, restProps, children);
-};
-
-JobList.Image = function JobListImage(_ref6) {
-  var restProps = Object.assign({}, _ref6);
+JobList.Image = function JobListImage(_ref5) {
+  var restProps = Object.assign({}, _ref5);
   return /*#__PURE__*/_react.default.createElement(_jobList.Image, restProps);
 };
 
-JobList.Date = function JobListDate(_ref7) {
-  var children = _ref7.children,
-      restProps = _objectWithoutProperties(_ref7, ["children"]);
+JobList.Span = function JobListSpan(_ref6) {
+  var children = _ref6.children,
+      restProps = _objectWithoutProperties(_ref6, ["children"]);
 
-  return /*#__PURE__*/_react.default.createElement(_jobList.Date, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobList.Span, restProps, children);
 };
 
-JobList.History = function JobListHistory(_ref8) {
-  var children = _ref8.children,
-      restProps = _objectWithoutProperties(_ref8, ["children"]);
+JobList.History = function JobListHistory(_ref7) {
+  var children = _ref7.children,
+      restProps = _objectWithoutProperties(_ref7, ["children"]);
 
   return /*#__PURE__*/_react.default.createElement(_jobList.History, restProps, children);
 };
@@ -36276,7 +36283,7 @@ function JobListContainer() {
       alt: "Company logo"
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "job"
-    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("span", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, new Date(job.created_at).toDateString()))));
+    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement("span", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, new Date(job.created_at).toDateString()))));
   })));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/container/form.js":[function(require,module,exports) {

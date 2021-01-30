@@ -4,9 +4,8 @@ import {
     Title,
     SubTitle,
     Button,
-    Location,
     Image, 
-    Date,
+    Span,
     History
 } from "./styles/job-list"
 
@@ -26,14 +25,12 @@ JobList.SubTitle = function JobListSubTitle({ children, ...restProps }) {
 JobList.Button = function JobListButton({ children, ...restProps }) {
 	return <Button {...restProps}>{children}</Button>;
 };
-JobList.Location = function JobListLocation({ children, ...restProps }) {
-	return <Location {...restProps}>{children}</Location>;
-};
+
 JobList.Image = function JobListImage({...restProps }) {
 	return <Image {...restProps}/>;
 };
-JobList.Date = function JobListDate({ children, ...restProps }) {
-	return <Date {...restProps}>{children}</Date>;
+JobList.Span = function JobListSpan({ children, ...restProps }) {
+	return <Span {...restProps}>{children}</Span>;
 };
 JobList.History = function JobListHistory({ children, ...restProps }) {
 	return <History {...restProps}>{children}</History>;

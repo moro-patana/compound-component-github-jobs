@@ -10,6 +10,11 @@ export const Container = styled.article`
     border-radius: 4px;
     margin-bottom: 30px;
 `;
+export const History = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+`;
 export const Title = styled.h2`
 font-size: 20px;
 `;
