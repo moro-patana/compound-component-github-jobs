@@ -33911,6 +33911,14 @@ function ContextProvider(_ref) {
             jobs: action.value
           });
         }
+
+      case "SEARCH_FULL_TIME_JOB":
+        {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            loading: false,
+            jobs: action.value
+          });
+        }
     }
   }, {
     jobs: [],

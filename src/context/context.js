@@ -17,6 +17,13 @@ export default function ContextProvider({children}) {
                     jobs: action.value
                 }
             }
+            case "SEARCH_FULL_TIME_JOB": {
+                return {
+                    ...state,
+                    loading: false,
+                    jobs: action.value
+                }
+            }
         }
     }, {
         jobs: [],
