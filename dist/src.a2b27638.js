@@ -33929,7 +33929,42 @@ function ContextProvider(_ref) {
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js"}],"src/app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/container/job-list.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = JobList;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _context = require("../context/context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function JobList() {
+  var _useContext = (0, _react.useContext)(_context.Context),
+      state = _useContext.state;
+
+  var jobs = state.jobs,
+      loading = state.loading;
+  console.log(jobs);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading"), !loading && /*#__PURE__*/_react.default.createElement("div", null, jobs.map(function (job) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "job_card",
+      key: job.id
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: job.company_logo,
+      alt: "Company logo"
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: "job"
+    }, /*#__PURE__*/_react.default.createElement("h3", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("button", null, job.type)));
+  })));
+}
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33939,12 +33974,14 @@ exports.default = App;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jobList = _interopRequireDefault(require("./container/job-list"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_jobList.default, null));
 }
-},{"react":"node_modules/react/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./container/job-list":"src/container/job-list.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
