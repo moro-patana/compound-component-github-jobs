@@ -35946,7 +35946,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\npadding: 20px;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -36269,7 +36269,7 @@ function JobListContainer() {
       alt: "Company logo"
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "job"
-    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement("span", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, new Date(job.created_at).toDateString()))));
+    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, job.location), /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, new Date(job.created_at).toDateString()))));
   })));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/container/form.js":[function(require,module,exports) {

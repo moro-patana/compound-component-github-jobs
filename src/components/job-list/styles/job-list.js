@@ -27,7 +27,9 @@ export const Button = styled.button`
  padding: 1rem;
  background-color: transparent;
 `;
-export const Span = styled.span``;
+export const Span = styled.span`
+padding: 20px;
+`;
 export const Image = styled.img`
 width: 100%;
 `;
