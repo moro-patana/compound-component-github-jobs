@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Context } from "../context/context"
+import { Form } from "../components"
+import { FormSubmit } from '../components/form/styles/form'
 export default function FormContainer() {
     const {state, dispatch} = useContext(Context)
     const {jobs} = state
@@ -12,17 +14,17 @@ export default function FormContainer() {
         setSearchForJob("")
     }
     return (
-        <div className="search-jobs">
-            <form className="form-input" onSubmit={searchForJobInput}>
+        <Form>
+            <FormSubmit  onSubmit={searchForJobInput}>
                 <i className="ri-earth-line"></i>
-                <input
+                <Form.Input
                 type="text"
                 placeholder="Type the title of the job"
                 value={searchForJob}
                 onChange={(e) => setSearchForJob(e.target.value)}
                 />
-                <button className="search-button">Search</button>
-            </form>
-        </div>
+                <Form.ButtonSubmit>Search</Form.ButtonSubmit>
+            </FormSubmit>
+        </Form>
     )
 }
