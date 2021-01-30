@@ -20,8 +20,8 @@ export default function JobListContainer() {
              <JobList.SubTitle>{job.title}</JobList.SubTitle>
              <JobList.Button>{job.type}</JobList.Button>
              <JobList.History>
-                 <span>{job.location}</span>
-                 <span>{new Date(job.created_at).toDateString()}</span>
+                 <JobList.Span>{job.location}</JobList.Span>
+                 <JobList.Span>{new Date(job.created_at).toDateString()}</JobList.Span>
              </JobList.History>
              </div>
             </JobList>
