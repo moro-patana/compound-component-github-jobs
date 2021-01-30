@@ -36334,7 +36334,90 @@ function FormContainer() {
     }
   }), /*#__PURE__*/_react.default.createElement(_components.Form.ButtonSubmit, null, "Search")));
 }
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js","../components/form/styles/form":"src/components/form/styles/form.js"}],"src/app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js","../components/form/styles/form":"src/components/form/styles/form.js"}],"src/container/form-sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormSidebarContainer;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _context = require("../context/context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function FormSidebarContainer() {
+  var _useContext = (0, _react.useContext)(_context.Context),
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  var jobs = state.jobs;
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isChecked = _useState2[0],
+      setIsChecked = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      location = _useState4[0],
+      setLocation = _useState4[1];
+
+  function handleCheckboxLocation() {
+    var fullTimeJobs = jobs.filter(function (job) {
+      return job.type === "Full Time";
+    });
+    setIsChecked(!isChecked);
+    dispatch({
+      type: "SEARCH_FULL_TIME_JOB",
+      value: fullTimeJobs
+    });
+  }
+
+  var searchByCityName = jobs.filter(function (job) {
+    return job.location.toLowerCase().includes(location);
+  });
+
+  function handleSearchCityName(e) {
+    setLocation(e.target.value);
+    dispatch({
+      type: "SEARCH_BY_CITYNAME",
+      value: searchByCityName
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    checked: isChecked,
+    onChange: handleCheckboxLocation
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time"))), /*#__PURE__*/_react.default.createElement("form", {
+    className: "search-city"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-earth-line"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Search by city",
+    value: location,
+    onChange: handleSearchCityName
+  }))));
+}
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36348,12 +36431,14 @@ var _jobList = _interopRequireDefault(require("./container/job-list"));
 
 var _form = _interopRequireDefault(require("./container/form"));
 
+var _formSidebar = _interopRequireDefault(require("./container/form-sidebar"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_form.default, null), /*#__PURE__*/_react.default.createElement(_jobList.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_form.default, null), /*#__PURE__*/_react.default.createElement(_formSidebar.default, null), /*#__PURE__*/_react.default.createElement(_jobList.default, null));
 }
-},{"react":"node_modules/react/index.js","./container/job-list":"src/container/job-list.js","./container/form":"src/container/form.js"}],"src/global-styles.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./container/job-list":"src/container/job-list.js","./container/form":"src/container/form.js","./container/form-sidebar":"src/container/form-sidebar.js"}],"src/global-styles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
