@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import { Context } from "../context/context"
+import { Link } from "react-router-dom"
 import { JobList } from "../components"
 export default function JobListContainer() {
     const {state} = useContext(Context)
@@ -13,6 +14,7 @@ export default function JobListContainer() {
         {!loading && (
             <div>
         {jobs.map(job => (
+            <Link to={`/job/${job.id}`} key={job.id}>
             <JobList key={job.id}>
                 <JobList.Image src={job.company_logo} alt="Company logo"/>
              <div className="job">
@@ -24,8 +26,8 @@ export default function JobListContainer() {
                  <JobList.Span>{new Date(job.created_at).toDateString()}</JobList.Span>
              </JobList.History>
              </div>
-            </JobList>
-    
+            </JobList> 
+            </Link>
          ))}
          </div>
         )}
