@@ -9,12 +9,12 @@ export default function App() {
     return (
         <div>
             <h1>Github jobs</h1>
-            <FormContainer/>
-            <FormSidebarContainer/>
-            <Switch>
-                <Route exact path="/">
-                <JobListContainer />
-                </Route>
+             <Switch>
+             <Route exact path="/">
+            	<FormContainer/>
+            	<FormSidebarContainer/>
+            	<JobListContainer/>
+            </Route>
                 <Route path="/job/:jobId">
                     <JobDetails/>
                 </Route>

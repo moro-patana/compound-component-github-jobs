@@ -36559,10 +36559,10 @@ var _jobDetails = _interopRequireDefault(require("./container/job-details"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_form.default, null), /*#__PURE__*/_react.default.createElement(_formSidebar.default, null), /*#__PURE__*/_react.default.createElement(_reactRouter.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_reactRouter.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     exact: true,
     path: "/"
-  }, /*#__PURE__*/_react.default.createElement(_jobList.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_form.default, null), /*#__PURE__*/_react.default.createElement(_formSidebar.default, null), /*#__PURE__*/_react.default.createElement(_jobList.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     path: "/job/:jobId"
   }, /*#__PURE__*/_react.default.createElement(_jobDetails.default, null))));
 }
@@ -36636,7 +36636,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50675" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58201" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
