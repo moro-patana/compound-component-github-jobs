@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Context } from "../context/Context"
+import { Context } from "../context/context"
 import { Link, useParams } from "react-router-dom"
 function JobDetails() {
     const { state, dispatch } = useContext(Context)
