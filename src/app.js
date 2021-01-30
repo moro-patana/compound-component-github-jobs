@@ -2,6 +2,8 @@ import React from 'react'
 import JobListContainer from "./container/job-list"
 import FormContainer from "./container/form"
 import FormSidebarContainer from "./container/form-sidebar"
+import { Route, Switch } from 'react-router'
+import JobDetails from './container/job-details'
 
 export default function App() {
     return (
@@ -9,7 +11,14 @@ export default function App() {
             <h1>Github jobs</h1>
             <FormContainer/>
             <FormSidebarContainer/>
-            <JobListContainer />
+            <Switch>
+                <Route exact path="/">
+                <JobListContainer />
+                </Route>
+                <Route path="/job/:jobId">
+                    <JobDetails/>
+                </Route>
+            </Switch>
         </div>
     )
 }
