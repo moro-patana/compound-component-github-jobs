@@ -6,7 +6,8 @@ import {
     Button,
     Location,
     Image, 
-    Date
+    Date,
+    History
 } from "./styles/job-list"
 
 export default function JobList({children, ...restProps}) {

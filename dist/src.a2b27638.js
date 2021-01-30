@@ -36103,7 +36103,7 @@ JobList.History = function JobListHistory(_ref8) {
   var children = _ref8.children,
       restProps = _objectWithoutProperties(_ref8, ["children"]);
 
-  return /*#__PURE__*/_react.default.createElement(History, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobList.History, restProps, children);
 };
 },{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/form/styles/form.js":[function(require,module,exports) {
 "use strict";
