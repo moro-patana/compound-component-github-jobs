@@ -33919,6 +33919,13 @@ function ContextProvider(_ref) {
             jobs: action.value
           });
         }
+
+      case "SEARCH_BY_CITYNAME":
+        {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            jobs: action.value
+          });
+        }
     }
   }, {
     jobs: [],
