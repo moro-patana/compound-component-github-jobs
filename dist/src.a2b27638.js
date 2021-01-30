@@ -36098,6 +36098,13 @@ JobList.Date = function JobListDate(_ref7) {
 
   return /*#__PURE__*/_react.default.createElement(_jobList.Date, restProps, children);
 };
+
+JobList.History = function JobListHistory(_ref8) {
+  var children = _ref8.children,
+      restProps = _objectWithoutProperties(_ref8, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(History, restProps, children);
+};
 },{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/form/styles/form.js":[function(require,module,exports) {
 "use strict";
 
@@ -36269,7 +36276,7 @@ function JobListContainer() {
       alt: "Company logo"
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "job"
-    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type)));
+    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("span", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, new Date(job.created_at).toDateString()))));
   })));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/container/form.js":[function(require,module,exports) {
