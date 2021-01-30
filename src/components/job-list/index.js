@@ -34,3 +34,6 @@ JobList.Image = function JobListImage({...restProps }) {
 JobList.Date = function JobListDate({ children, ...restProps }) {
 	return <Date {...restProps}>{children}</Date>;
 };
+JobList.History = function JobListHistory({ children, ...restProps }) {
+	return <History {...restProps}>{children}</History>;
+};
