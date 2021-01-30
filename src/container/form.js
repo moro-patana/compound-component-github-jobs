@@ -16,7 +16,6 @@ export default function FormContainer() {
     return (
         <Form>
             <FormSubmit  onSubmit={searchForJobInput}>
-                <i className="ri-earth-line"></i>
                 <Form.Input
                 type="text"
                 placeholder="Type the title of the job"

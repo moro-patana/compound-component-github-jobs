@@ -36330,9 +36330,7 @@ function FormContainer() {
 
   return /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_form.FormSubmit, {
     onSubmit: searchForJobInput
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "ri-earth-line"
-  }), /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
+  }, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
     type: "text",
     placeholder: "Type the title of the job",
     value: searchForJob,
