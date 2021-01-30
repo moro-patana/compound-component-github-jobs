@@ -1,0 +1,19 @@
+{
+  "name": "compound-component-github-jobs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moro-patana/compound-component-github-jobs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moro-patana/compound-component-github-jobs/issues"
+  },
+  "homepage": "https://github.com/moro-patana/compound-component-github-jobs#readme"
+}
