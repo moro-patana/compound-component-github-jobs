@@ -27,8 +27,7 @@ export const Button = styled.button`
  padding: 1rem;
  background-color: transparent;
 `;
-export const Location = styled.p``;
+export const Span = styled.span``;
 export const Image = styled.img`
 width: 100%;
 `;
-export const Date = styled.p``;

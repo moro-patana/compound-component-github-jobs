@@ -35929,21 +35929,11 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Date = exports.Image = exports.Location = exports.Button = exports.SubTitle = exports.Title = exports.History = exports.Container = void 0;
+exports.Image = exports.Span = exports.Button = exports.SubTitle = exports.Title = exports.History = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _templateObject8() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject8 = function _templateObject8() {
-    return data;
-  };
-
-  return data;
-}
 
 function _templateObject7() {
   var data = _taggedTemplateLiteral(["\nwidth: 100%;\n"]);
@@ -36037,17 +36027,13 @@ var Button = _styledComponents.default.button(_templateObject5());
 
 exports.Button = Button;
 
-var Location = _styledComponents.default.p(_templateObject6());
+var Span = _styledComponents.default.span(_templateObject6());
 
-exports.Location = Location;
+exports.Span = Span;
 
 var Image = _styledComponents.default.img(_templateObject7());
 
 exports.Image = Image;
-
-var Date = _styledComponents.default.p(_templateObject8());
-
-exports.Date = Date;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/job-list/index.js":[function(require,module,exports) {
 "use strict";
 
