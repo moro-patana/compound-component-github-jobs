@@ -7,15 +7,14 @@ export default function FormContainer() {
     const {jobs} = state
     const [searchForJob, setSearchForJob] = useState("")
 
-    const filterLocation= jobs.map(item => item.location)
-    console.log(filterLocation);
-
+    
     function searchForJobInput(e) {
         e.preventDefault()
         const filteredJobByName = jobs.filter(job => job.title.toLowerCase().includes(searchForJob))
         dispatch({type: "SEARCH_JOB_BY_NAME", value: filteredJobByName})
         setSearchForJob("")
     }
+    
     return (
         <Form>
             <FormSubmit  onSubmit={searchForJobInput}>

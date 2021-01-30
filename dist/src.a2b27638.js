@@ -36316,11 +36316,6 @@ function FormContainer() {
       searchForJob = _useState2[0],
       setSearchForJob = _useState2[1];
 
-  var filterLocation = jobs.map(function (item) {
-    return item.location;
-  });
-  console.log(filterLocation);
-
   function searchForJobInput(e) {
     e.preventDefault();
     var filteredJobByName = jobs.filter(function (job) {
