@@ -33903,6 +33903,14 @@ function ContextProvider(_ref) {
             jobs: action.jobs
           });
         }
+
+      case "SEARCH_JOB_BY_NAME":
+        {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            loading: false,
+            jobs: action.value
+          });
+        }
     }
   }, {
     jobs: [],

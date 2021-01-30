@@ -10,6 +10,13 @@ export default function ContextProvider({children}) {
 
                 }
             }
+            case "SEARCH_JOB_BY_NAME": {
+                return {
+                    ...state,
+                    loading: false,
+                    jobs: action.value
+                }
+            }
         }
     }, {
         jobs: [],
