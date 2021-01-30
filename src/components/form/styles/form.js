@@ -4,6 +4,8 @@ export const Container = styled.div`
 background-image: url("/img/backgroundImg.png");
 background-repeat: no-repeat;
 padding: 60px;
+margin-bottom: 50px;
+border-radius: 10px;
 `;
 export const FormSubmit = styled.form`
 display: flex;

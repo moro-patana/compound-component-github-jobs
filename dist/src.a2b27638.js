@@ -36126,7 +36126,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nbackground-image: url(\"/img/backgroundImg.png\");\nbackground-repeat: no-repeat;\npadding: 60px;\n"]);
+  var data = _taggedTemplateLiteral(["\nbackground-image: url(\"/img/backgroundImg.png\");\nbackground-repeat: no-repeat;\npadding: 60px;\nmargin-bottom: 50px;\nborder-radius: 10px;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
