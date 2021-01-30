@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { Context } from "../context/context"
-export default function JobList() {
+import { JobList } from "../components"
+export default function JobListContainer() {
     const {state} = useContext(Context)
     const {jobs, loading} = state;
     console.log(jobs);
@@ -12,14 +13,14 @@ export default function JobList() {
         {!loading && (
             <div>
         {jobs.map(job => (
-            <div className="job_card" key={job.id}>
-             <img src={job.company_logo} alt="Company logo"/>
+            <JobList key={job.id}>
+                <JobList.Image src={job.company_logo} alt="Company logo"/>
              <div className="job">
-             <h3>{job.company}</h3>
-             <p>{job.title}</p>
-             <button>{job.type}</button>
+             <JobList.Title>{job.company}</JobList.Title>
+             <JobList.SubTitle>{job.title}</JobList.SubTitle>
+             <JobList.Button>{job.type}</JobList.Button>
              </div>
-            </div>
+            </JobList>
     
          ))}
          </div>
