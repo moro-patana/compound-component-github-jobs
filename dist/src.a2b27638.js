@@ -36083,7 +36083,121 @@ JobList.Date = function JobListDate(_ref7) {
 
   return /*#__PURE__*/_react.default.createElement(_jobList.Date, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/form/styles/form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ButtonSubmit = exports.Input = exports.FormSubmit = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n    color: #fff;\n    background-color: #1e86ff;\n    transition: opacity .2s;\n    border: none;\n    padding: 1rem;\n    border-radius: 10px;\n    font-size: 18px;\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n    padding: 10px;\n    background-color: ghostwhite;\n    border: none;\n    border-radius: 10px;\n    font-size: 18px;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\ndisplay: flex;\nflex-direction: row;\njustify-content: space-between;\npadding: 1rem;\nbackground-color: white;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\nbackground-image: url(\"/img/backgroundImg.png\");\nbackground-repeat: no-repeat;\npadding: 60px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject());
+
+exports.Container = Container;
+
+var FormSubmit = _styledComponents.default.form(_templateObject2());
+
+exports.FormSubmit = FormSubmit;
+
+var Input = _styledComponents.default.input(_templateObject3());
+
+exports.Input = Input;
+
+var ButtonSubmit = _styledComponents.default.button(_templateObject4());
+
+exports.ButtonSubmit = ButtonSubmit;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/form/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Form;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _form = require("./styles/form");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Form(_ref) {
+  var children = _ref.children,
+      restProps = _objectWithoutProperties(_ref, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_form.Container, restProps, children);
+}
+
+Form.FormSubmit = function FormFormSubmit(_ref2) {
+  var children = _ref2.children,
+      restProps = _objectWithoutProperties(_ref2, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_form.FormSubmit, restProps);
+};
+
+Form.Input = function FormInput(_ref3) {
+  var children = _ref3.children,
+      restProps = _objectWithoutProperties(_ref3, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_form.Input, restProps);
+};
+
+Form.ButtonSubmit = function FormButtonSubmit(_ref4) {
+  var children = _ref4.children,
+      restProps = _objectWithoutProperties(_ref4, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_form.ButtonSubmit, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/form":"src/components/form/styles/form.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36095,11 +36209,19 @@ Object.defineProperty(exports, "JobList", {
     return _jobList.default;
   }
 });
+Object.defineProperty(exports, "Form", {
+  enumerable: true,
+  get: function () {
+    return _form.default;
+  }
+});
 
 var _jobList = _interopRequireDefault(require("./job-list"));
 
+var _form = _interopRequireDefault(require("./form"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./job-list":"src/components/job-list/index.js"}],"src/container/job-list.js":[function(require,module,exports) {
+},{"./job-list":"src/components/job-list/index.js","./form":"src/components/form/index.js"}],"src/container/job-list.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36147,6 +36269,10 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _context = require("../context/context");
 
+var _components = require("../components");
+
+var _form = require("../components/form/styles/form");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -36187,25 +36313,20 @@ function FormContainer() {
     setSearchForJob("");
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "search-jobs"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    className: "form-input",
+  return /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_form.FormSubmit, {
     onSubmit: searchForJobInput
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "ri-earth-line"
-  }), /*#__PURE__*/_react.default.createElement("input", {
+  }), /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
     type: "text",
     placeholder: "Type the title of the job",
     value: searchForJob,
     onChange: function onChange(e) {
       return setSearchForJob(e.target.value);
     }
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    className: "search-button"
-  }, "Search")));
+  }), /*#__PURE__*/_react.default.createElement(_components.Form.ButtonSubmit, null, "Search")));
 }
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js"}],"src/app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js","../components/form/styles/form":"src/components/form/styles/form.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36294,7 +36415,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61116" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50675" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
