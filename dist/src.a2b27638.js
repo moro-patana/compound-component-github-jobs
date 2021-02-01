@@ -33868,161 +33868,104 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var Context = _react.default.createContext();
+const Context = _react.default.createContext();
 
 exports.Context = Context;
 
-function ContextProvider(_ref) {
-  var children = _ref.children;
-
-  var _useState = (0, _react.useState)("London"),
-      _useState2 = _slicedToArray(_useState, 2),
-      query = _useState2[0],
-      setQuery = _useState2[1];
-
-  var JOBS_API = " https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location=\"".concat(query, "\"");
-
-  var _useReducer = (0, _react.useReducer)(function (state, action) {
+function ContextProvider({
+  children
+}) {
+  const [query, setQuery] = (0, _react.useState)("London");
+  const JOBS_API = ` https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location="${query}"`;
+  const [state, dispatch] = (0, _react.useReducer)((state, action) => {
     switch (action.type) {
       case "FETCH_DATA":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.jobs
-          });
+          };
         }
 
       case "SEARCH_JOB_BY_NAME":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.value
-          });
+          };
         }
 
       case "SEARCH_FULL_TIME_JOB":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.value
-          });
+          };
         }
 
       case "SEARCH_BY_CITYNAME":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             jobs: action.value
-          });
+          };
         }
 
       case "SEARCH_JOB_IN_UNITED_STATES":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.value
-          });
+          };
         }
 
       case "SEARCH_JOB_IN_NEW_YORK":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.value
-          });
+          };
         }
 
       case "SEARCH_JOB_IN_BARCELONA":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.value
-          });
+          };
         }
 
       case "SEARCH_JOB_IN_BERLIN":
         {
-          return _objectSpread(_objectSpread({}, state), {}, {
+          return { ...state,
             loading: false,
             jobs: action.value
-          });
+          };
         }
     }
   }, {
     jobs: [],
     loading: true
-  }),
-      _useReducer2 = _slicedToArray(_useReducer, 2),
-      state = _useReducer2[0],
-      dispatch = _useReducer2[1];
+  });
 
-  function fetchData() {
-    return _fetchData.apply(this, arguments);
+  async function fetchData() {
+    const response = await fetch(JOBS_API);
+    const data = await response.json();
+    dispatch({
+      type: "FETCH_DATA",
+      jobs: data
+    });
   }
 
-  function _fetchData() {
-    _fetchData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var response, data;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return fetch(JOBS_API);
-
-            case 2:
-              response = _context.sent;
-              _context.next = 5;
-              return response.json();
-
-            case 5:
-              data = _context.sent;
-              dispatch({
-                type: "FETCH_DATA",
-                jobs: data
-              });
-
-            case 7:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-    return _fetchData.apply(this, arguments);
-  }
-
-  (0, _react.useEffect)(function () {
+  (0, _react.useEffect)(() => {
     fetchData();
   }, []);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
-      state: state,
-      dispatch: dispatch,
-      query: query,
-      setQuery: setQuery,
-      fetchData: fetchData
+      state,
+      dispatch,
+      query,
+      setQuery,
+      fetchData
     }
   }, children);
 }
@@ -35041,31 +34984,25 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function v() {
   return (v = Object.assign || function (e) {
     for (var t = 1; t < arguments.length; t++) {
       var n = arguments[t];
 
-      for (var r in n) {
-        Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
-      }
+      for (var r in n) Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
     }
 
     return e;
   }).apply(this, arguments);
 }
 
-var g = function g(e, t) {
-  for (var n = [e[0]], r = 0, o = t.length; r < o; r += 1) {
-    n.push(t[r], e[r + 1]);
-  }
+var g = function (e, t) {
+  for (var n = [e[0]], r = 0, o = t.length; r < o; r += 1) n.push(t[r], e[r + 1]);
 
   return n;
 },
-    S = function S(t) {
-  return null !== t && "object" == _typeof(t) && "[object Object]" === (t.toString ? t.toString() : Object.prototype.toString.call(t)) && !(0, _reactIs.typeOf)(t);
+    S = function (t) {
+  return null !== t && "object" == typeof t && "[object Object]" === (t.toString ? t.toString() : Object.prototype.toString.call(t)) && !(0, _reactIs.typeOf)(t);
 },
     w = Object.freeze([]),
     E = Object.freeze({});
@@ -35109,9 +35046,7 @@ var A = "undefined" != typeof process && (undefined || undefined) || "data-style
 exports.version = C;
 
 function D() {
-  for (var e = arguments.length <= 0 ? void 0 : arguments[0], t = [], n = 1, r = arguments.length; n < r; n += 1) {
-    t.push(n < 0 || arguments.length <= n ? void 0 : arguments[n]);
-  }
+  for (var e = arguments.length <= 0 ? void 0 : arguments[0], t = [], n = 1, r = arguments.length; n < r; n += 1) t.push(n < 0 || arguments.length <= n ? void 0 : arguments[n]);
 
   return t.forEach(function (t) {
     e = e.replace(/%[a-z]/, t);
@@ -35119,9 +35054,7 @@ function D() {
 }
 
 function j(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) {
-    n[r - 1] = arguments[r];
-  }
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
 
   throw "production" === "development" ? new Error("An error occurred. See https://git.io/JUIaE#" + e + " for more information." + (n.length > 0 ? " Args: " + n.join(", ") : "")) : new Error(D.apply(void 0, [R[e]].concat(n)).trim());
 }
@@ -35133,27 +35066,19 @@ var T = function () {
 
   var t = e.prototype;
   return t.indexOfGroup = function (e) {
-    for (var t = 0, n = 0; n < e; n++) {
-      t += this.groupSizes[n];
-    }
+    for (var t = 0, n = 0; n < e; n++) t += this.groupSizes[n];
 
     return t;
   }, t.insertRules = function (e, t) {
     if (e >= this.groupSizes.length) {
-      for (var n = this.groupSizes, r = n.length, o = r; e >= o;) {
-        (o <<= 1) < 0 && j(16, "" + e);
-      }
+      for (var n = this.groupSizes, r = n.length, o = r; e >= o;) (o <<= 1) < 0 && j(16, "" + e);
 
       this.groupSizes = new Uint32Array(o), this.groupSizes.set(n), this.length = o;
 
-      for (var s = r; s < o; s++) {
-        this.groupSizes[s] = 0;
-      }
+      for (var s = r; s < o; s++) this.groupSizes[s] = 0;
     }
 
-    for (var i = this.indexOfGroup(e + 1), a = 0, c = t.length; a < c; a++) {
-      this.tag.insertRule(i, t[a]) && (this.groupSizes[e]++, i++);
-    }
+    for (var i = this.indexOfGroup(e + 1), a = 0, c = t.length; a < c; a++) this.tag.insertRule(i, t[a]) && (this.groupSizes[e]++, i++);
   }, t.clearGroup = function (e) {
     if (e < this.length) {
       var t = this.groupSizes[e],
@@ -35161,17 +35086,13 @@ var T = function () {
           r = n + t;
       this.groupSizes[e] = 0;
 
-      for (var o = n; o < r; o++) {
-        this.tag.deleteRule(n);
-      }
+      for (var o = n; o < r; o++) this.tag.deleteRule(n);
     }
   }, t.getGroup = function (e) {
     var t = "";
     if (e >= this.length || 0 === this.groupSizes[e]) return t;
 
-    for (var n = this.groupSizes[e], r = this.indexOfGroup(e), o = r + n, s = r; s < o; s++) {
-      t += this.tag.getRule(s) + "/*!sc*/\n";
-    }
+    for (var n = this.groupSizes[e], r = this.indexOfGroup(e), o = r + n, s = r; s < o; s++) t += this.tag.getRule(s) + "/*!sc*/\n";
 
     return t;
   }, e;
@@ -35179,30 +35100,26 @@ var T = function () {
     k = new Map(),
     x = new Map(),
     V = 1,
-    B = function B(e) {
+    B = function (e) {
   if (k.has(e)) return k.get(e);
 
-  for (; x.has(V);) {
-    V++;
-  }
+  for (; x.has(V);) V++;
 
   var t = V++;
   return "production" !== "development" && ((0 | t) < 0 || t > 1 << 30) && j(16, "" + t), k.set(e, t), x.set(t, e), t;
 },
-    M = function M(e) {
+    M = function (e) {
   return x.get(e);
 },
-    z = function z(e, t) {
+    z = function (e, t) {
   k.set(e, t), x.set(t, e);
 },
     L = "style[" + A + '][data-styled-version="5.2.1"]',
     G = new RegExp("^" + A + '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),
-    F = function F(e, t, n) {
-  for (var r, o = n.split(","), s = 0, i = o.length; s < i; s++) {
-    (r = o[s]) && e.registerName(t, r);
-  }
+    F = function (e, t, n) {
+  for (var r, o = n.split(","), s = 0, i = o.length; s < i; s++) (r = o[s]) && e.registerName(t, r);
 },
-    Y = function Y(e, t) {
+    Y = function (e, t) {
   for (var n = t.innerHTML.split("/*!sc*/\n"), r = [], o = 0, s = n.length; o < s; o++) {
     var i = n[o].trim();
 
@@ -35217,10 +35134,10 @@ var T = function () {
     }
   }
 },
-    q = function q() {
+    q = function () {
   return "undefined" != typeof __webpack_nonce__ ? __webpack_nonce__ : null;
 },
-    H = function H(e) {
+    H = function (e) {
   var t = document.head,
       n = e || t,
       r = document.createElement("style"),
@@ -35366,7 +35283,7 @@ var T = function () {
   }, e;
 }(),
     K = /(a)(d)/gi,
-    Q = function Q(e) {
+    Q = function (e) {
   return String.fromCharCode(e + (e > 25 ? 39 : 97));
 };
 
@@ -35374,21 +35291,17 @@ function ee(e) {
   var t,
       n = "";
 
-  for (t = Math.abs(e); t > 52; t = t / 52 | 0) {
-    n = Q(t % 52) + n;
-  }
+  for (t = Math.abs(e); t > 52; t = t / 52 | 0) n = Q(t % 52) + n;
 
   return (Q(t % 52) + n).replace(K, "$1-$2");
 }
 
-var te = function te(e, t) {
-  for (var n = t.length; n;) {
-    e = 33 * e ^ t.charCodeAt(--n);
-  }
+var te = function (e, t) {
+  for (var n = t.length; n;) e = 33 * e ^ t.charCodeAt(--n);
 
   return e;
 },
-    ne = function ne(e) {
+    ne = function (e) {
   return te(5381, e);
 };
 
@@ -35495,7 +35408,7 @@ function ce(e) {
   }(function (e) {
     d.push(e);
   }),
-      f = function f(e, r, s) {
+      f = function (e, r, s) {
     return 0 === r && ae.includes(s[n.length]) || s.match(o) ? e : "." + t;
   };
 
@@ -35584,7 +35497,7 @@ var ve = function () {
     ge = /([A-Z])/,
     Se = /([A-Z])/g,
     we = /^ms-/,
-    Ee = function Ee(e) {
+    Ee = function (e) {
   return "-" + e.toLowerCase();
 };
 
@@ -35592,15 +35505,13 @@ function be(e) {
   return ge.test(e) ? e.replace(Se, Ee).replace(we, "-ms-") : e;
 }
 
-var _e = function _e(e) {
+var _e = function (e) {
   return null == e || !1 === e || "" === e;
 };
 
 function Ne(e, n, r, o) {
   if (Array.isArray(e)) {
-    for (var s, i = [], a = 0, c = e.length; a < c; a += 1) {
-      "" !== (s = Ne(e[a], n, r, o)) && (Array.isArray(s) ? i.push.apply(i, s) : i.push(s));
-    }
+    for (var s, i = [], a = 0, c = e.length; a < c; a += 1) "" !== (s = Ne(e[a], n, r, o)) && (Array.isArray(s) ? i.push.apply(i, s) : i.push(s));
 
     return i;
   }
@@ -35620,25 +35531,21 @@ function Ne(e, n, r, o) {
         o,
         s = [];
 
-    for (var i in t) {
-      t.hasOwnProperty(i) && !_e(t[i]) && (S(t[i]) ? s.push.apply(s, e(t[i], i)) : b(t[i]) ? s.push(be(i) + ":", t[i], ";") : s.push(be(i) + ": " + (r = i, null == (o = t[i]) || "boolean" == typeof o || "" === o ? "" : "number" != typeof o || 0 === o || r in _unitless.default ? String(o).trim() : o + "px") + ";"));
-    }
+    for (var i in t) t.hasOwnProperty(i) && !_e(t[i]) && (S(t[i]) ? s.push.apply(s, e(t[i], i)) : b(t[i]) ? s.push(be(i) + ":", t[i], ";") : s.push(be(i) + ": " + (r = i, null == (o = t[i]) || "boolean" == typeof o || "" === o ? "" : "number" != typeof o || 0 === o || r in _unitless.default ? String(o).trim() : o + "px") + ";"));
 
     return n ? [n + " {"].concat(s, ["}"]) : s;
   }(e) : e.toString();
 }
 
 function Ae(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) {
-    n[r - 1] = arguments[r];
-  }
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
 
   return b(e) || S(e) ? Ne(g(w, [e].concat(n))) : 0 === n.length && 1 === e.length && "string" == typeof e[0] ? e : Ne(g(e, n));
 }
 
 var Ce = /invalid hook call/i,
     Ie = new Set(),
-    Pe = function Pe(e, t) {
+    Pe = function (e, t) {
   if ("production" !== "development") {
     var n = "The component " + e + (t ? ' with the id of "' + t + '"' : "") + " has been created dynamically.\nYou may see this warning because you've called styled inside another component.\nTo resolve this only create new StyledComponents outside of any render method and function component.";
 
@@ -35649,7 +35556,7 @@ var Ce = /invalid hook call/i,
     }
   }
 },
-    Oe = function Oe(e, t, n) {
+    Oe = function (e, t, n) {
   return void 0 === n && (n = E), e.theme !== n.theme && e.theme || t || n.theme;
 },
     Re = /[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,
@@ -35659,7 +35566,7 @@ function je(e) {
   return e.replace(Re, "-").replace(De, "");
 }
 
-var Te = function Te(e) {
+var Te = function (e) {
   return ee(ne(e) >>> 0);
 };
 
@@ -35667,10 +35574,10 @@ function ke(e) {
   return "string" == typeof e && ("production" === "development" || e.charAt(0) === e.charAt(0).toLowerCase());
 }
 
-var xe = function xe(e) {
-  return "function" == typeof e || "object" == _typeof(e) && null !== e && !Array.isArray(e);
+var xe = function (e) {
+  return "function" == typeof e || "object" == typeof e && null !== e && !Array.isArray(e);
 },
-    Ve = function Ve(e) {
+    Ve = function (e) {
   return "__proto__" !== e && "constructor" !== e && "prototype" !== e;
 };
 
@@ -35680,15 +35587,11 @@ function Be(e, t, n) {
 }
 
 function Me(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) {
-    n[r - 1] = arguments[r];
-  }
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
 
   for (var o = 0, s = n; o < s.length; o++) {
     var i = s[o];
-    if (xe(i)) for (var a in i) {
-      Ve(a) && Be(e, i[a], a);
-    }
+    if (xe(i)) for (var a in i) Ve(a) && Be(e, i[a], a);
   }
 
   return e;
@@ -35708,10 +35611,10 @@ function Ge(e) {
 
       if (b(e)) {
         var n = e(t);
-        return "production" === "development" || null !== n && !Array.isArray(n) && "object" == _typeof(n) ? n : j(7);
+        return "production" === "development" || null !== n && !Array.isArray(n) && "object" == typeof n ? n : j(7);
       }
 
-      return Array.isArray(e) || "object" != _typeof(e) ? j(8) : t ? v({}, t, {}, e) : e;
+      return Array.isArray(e) || "object" != typeof e ? j(8) : t ? v({}, t, {}, e) : e;
     }(e.theme, t);
   }, [e.theme, t]);
   return e.children ? _react.default.createElement(ze.Provider, {
@@ -35747,7 +35650,7 @@ function Ye(e, t, n) {
   var C,
       I = new se(n, g, o ? e.componentStyle : void 0),
       P = I.isStatic && 0 === c.length,
-      O = function O(e, t) {
+      O = function (e, t) {
     return function (e, t, n, r) {
       var o = e.attrs,
           i = e.componentStyle,
@@ -35770,9 +35673,7 @@ function Ye(e, t, n) {
               s,
               i = e;
 
-          for (t in b(i) && (i = i(r)), i) {
-            r[t] = o[t] = "className" === t ? (n = o[t], s = i[t], n && s ? n + " " + s : n || s) : i[t];
-          }
+          for (t in b(i) && (i = i(r)), i) r[t] = o[t] = "className" === t ? (n = o[t], s = i[t], n && s ? n + " " + s : n || s) : i[t];
         }), [r, o];
       }(Oe(t, (0, _react.useContext)(ze), a) || E, t, o),
           y = f[0],
@@ -35789,9 +35690,7 @@ function Ye(e, t, n) {
           A = g !== t ? v({}, t, {}, g) : t,
           C = {};
 
-      for (var I in A) {
-        "$" !== I[0] && "as" !== I && ("forwardedAs" === I ? C.as = A[I] : (d ? d(I, _isPropValid.default) : !N || (0, _isPropValid.default)(I)) && (C[I] = A[I]));
-      }
+      for (var I in A) "$" !== I[0] && "as" !== I && ("forwardedAs" === I ? C.as = A[I] : (d ? d(I, _isPropValid.default) : !N || (0, _isPropValid.default)(I)) && (C[I] = A[I]));
 
       return t.style && g.style !== t.style && (C.style = v({}, t.style, {}, g.style)), C.className = Array.prototype.concat(c, h, S !== h ? S : null, t.className, g.className).filter(Boolean).join(" "), C.ref = w, (0, _react.createElement)(_, C);
     }(C, e, t, P);
@@ -35806,9 +35705,7 @@ function Ye(e, t, n) {
           o = {},
           s = Object.keys(e);
 
-      for (r = 0; r < s.length; r++) {
-        n = s[r], t.indexOf(n) >= 0 || (o[n] = e[n]);
-      }
+      for (r = 0; r < s.length; r++) n = s[r], t.indexOf(n) >= 0 || (o[n] = e[n]);
 
       return o;
     }(t, ["componentId"]),
@@ -35819,10 +35716,10 @@ function Ye(e, t, n) {
       componentId: s
     }), n);
   }, Object.defineProperty(C, "defaultProps", {
-    get: function get() {
+    get: function () {
       return this._foldedDefaultProps;
     },
-    set: function set(t) {
+    set: function (t) {
       this._foldedDefaultProps = o ? Me({}, e.defaultProps, t) : t;
     }
   }), "production" !== "development" && (Pe(f, g), C.warnTooManyClasses = function (e, t) {
@@ -35848,11 +35745,11 @@ function Ye(e, t, n) {
   }), C;
 }
 
-var qe = function qe(e) {
+var qe = function (e) {
   return function e(t, r, o) {
     if (void 0 === o && (o = E), !(0, _reactIs.isValidElementType)(r)) return j(1, String(r));
 
-    var s = function s() {
+    var s = function () {
       return t(r, o, Ae.apply(void 0, arguments));
     };
 
@@ -35888,9 +35785,7 @@ var He = function () {
 }();
 
 function $e(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), o = 1; o < t; o++) {
-    n[o - 1] = arguments[o];
-  }
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), o = 1; o < t; o++) n[o - 1] = arguments[o];
 
   var i = Ae.apply(void 0, [e].concat(n)),
       a = "sc-global-" + Te(JSON.stringify(i)),
@@ -35925,9 +35820,7 @@ function $e(e) {
 function We(e) {
   "production" !== "development" && "undefined" != typeof navigator && "ReactNative" === navigator.product && console.warn("`keyframes` cannot be used on ReactNative, only on the web. To do animation in ReactNative please use Animated.");
 
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) {
-    n[r - 1] = arguments[r];
-  }
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
 
   var o = Ae.apply(void 0, [e].concat(n)).join(""),
       s = Te(o);
@@ -35969,7 +35862,7 @@ var Ue = function () {
     return j(3);
   }, e;
 }(),
-    Je = function Je(e) {
+    Je = function (e) {
   var t = _react.default.forwardRef(function (t, n) {
     var o = (0, _react.useContext)(ze),
         i = e.defaultProps,
@@ -35982,7 +35875,7 @@ var Ue = function () {
 
   return (0, _hoistNonReactStatics.default)(t, e), t.displayName = "WithTheme(" + _(e) + ")", t;
 },
-    Xe = function Xe() {
+    Xe = function () {
   return (0, _react.useContext)(ze);
 },
     Ze = {
@@ -36009,104 +35902,45 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\nwidth: 100%;\n"]);
-
-  _templateObject7 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\npadding: 20px;\n"]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n border: 1px solid black;\n padding: 1rem;\n background-color: transparent;\n"]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n     margin: 0;\n    font-size: 20px;\n"]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\nfont-size: 20px;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    justify-content: flex-end;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    padding: 1rem;\n    display: grid;\n    grid-template-columns: 20% 70%;\n    column-gap: 30px;\n    background: #fff;\n    box-shadow: 0 2px 4px rgb(0 0 0 / 5%);\n    border-radius: 4px;\n    margin-bottom: 30px;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var Container = _styledComponents.default.article(_templateObject());
-
+const Container = _styledComponents.default.article`
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 20% 70%;
+    column-gap: 30px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+    margin-bottom: 30px;
+`;
 exports.Container = Container;
-
-var History = _styledComponents.default.div(_templateObject2());
-
+const History = _styledComponents.default.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+`;
 exports.History = History;
-
-var Title = _styledComponents.default.h2(_templateObject3());
-
+const Title = _styledComponents.default.h2`
+font-size: 20px;
+`;
 exports.Title = Title;
-
-var SubTitle = _styledComponents.default.h3(_templateObject4());
-
+const SubTitle = _styledComponents.default.h3`
+     margin: 0;
+    font-size: 20px;
+`;
 exports.SubTitle = SubTitle;
-
-var Button = _styledComponents.default.button(_templateObject5());
-
+const Button = _styledComponents.default.button`
+ border: 1px solid black;
+ padding: 1rem;
+ background-color: transparent;
+`;
 exports.Button = Button;
-
-var Span = _styledComponents.default.span(_templateObject6());
-
+const Span = _styledComponents.default.span`
+padding: 20px;
+`;
 exports.Span = Span;
-
-var Image = _styledComponents.default.img(_templateObject7());
-
+const Image = _styledComponents.default.img`
+width: 100%;
+`;
 exports.Image = Image;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/job-list/index.js":[function(require,module,exports) {
 "use strict";
@@ -36122,54 +35956,50 @@ var _jobList = require("./styles/job-list");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function JobList(_ref) {
-  var children = _ref.children,
-      restProps = _objectWithoutProperties(_ref, ["children"]);
-
+function JobList({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Container, restProps, children);
 }
 
-JobList.Title = function JobListTitle(_ref2) {
-  var children = _ref2.children,
-      restProps = _objectWithoutProperties(_ref2, ["children"]);
-
+JobList.Title = function JobListTitle({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Title, restProps, children);
 };
 
-JobList.SubTitle = function JobListSubTitle(_ref3) {
-  var children = _ref3.children,
-      restProps = _objectWithoutProperties(_ref3, ["children"]);
-
+JobList.SubTitle = function JobListSubTitle({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.SubTitle, restProps, children);
 };
 
-JobList.Button = function JobListButton(_ref4) {
-  var children = _ref4.children,
-      restProps = _objectWithoutProperties(_ref4, ["children"]);
-
+JobList.Button = function JobListButton({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Button, restProps, children);
 };
 
-JobList.Image = function JobListImage(_ref5) {
-  var restProps = Object.assign({}, _ref5);
+JobList.Image = function JobListImage({ ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Image, restProps);
 };
 
-JobList.Span = function JobListSpan(_ref6) {
-  var children = _ref6.children,
-      restProps = _objectWithoutProperties(_ref6, ["children"]);
-
+JobList.Span = function JobListSpan({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Span, restProps, children);
 };
 
-JobList.History = function JobListHistory(_ref7) {
-  var children = _ref7.children,
-      restProps = _objectWithoutProperties(_ref7, ["children"]);
-
+JobList.History = function JobListHistory({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_jobList.History, restProps, children);
 };
 },{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/form/styles/form.js":[function(require,module,exports) {
@@ -36184,62 +36014,39 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n    color: #fff;\n    background-color: #1e86ff;\n    transition: opacity .2s;\n    border: none;\n    padding: 1rem;\n    border-radius: 10px;\n    font-size: 18px;\n"]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n    padding: 10px;\n    background-color: ghostwhite;\n    border: none;\n    border-radius: 10px;\n    font-size: 18px;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\ndisplay: flex;\nflex-direction: row;\njustify-content: space-between;\npadding: 1rem;\nbackground-color: white;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nbackground-image: url(\"/img/backgroundImg.png\");\nbackground-repeat: no-repeat;\npadding: 60px;\nmargin-bottom: 50px;\nborder-radius: 10px;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var Container = _styledComponents.default.div(_templateObject());
-
+const Container = _styledComponents.default.div`
+background-image: url("/img/backgroundImg.png");
+background-repeat: no-repeat;
+padding: 60px;
+margin-bottom: 50px;
+border-radius: 10px;
+`;
 exports.Container = Container;
-
-var FormSubmit = _styledComponents.default.form(_templateObject2());
-
+const FormSubmit = _styledComponents.default.form`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 1rem;
+background-color: white;
+`;
 exports.FormSubmit = FormSubmit;
-
-var Input = _styledComponents.default.input(_templateObject3());
-
+const Input = _styledComponents.default.input`
+    padding: 10px;
+    background-color: ghostwhite;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+`;
 exports.Input = Input;
-
-var ButtonSubmit = _styledComponents.default.button(_templateObject4());
-
+const ButtonSubmit = _styledComponents.default.button`
+    color: #fff;
+    background-color: #1e86ff;
+    transition: opacity .2s;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 18px;
+`;
 exports.ButtonSubmit = ButtonSubmit;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/form/index.js":[function(require,module,exports) {
 "use strict";
@@ -36255,35 +36062,31 @@ var _form = require("./styles/form");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function Form(_ref) {
-  var children = _ref.children,
-      restProps = _objectWithoutProperties(_ref, ["children"]);
-
+function Form({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_form.Container, restProps, children);
 }
 
-Form.FormSubmit = function FormFormSubmit(_ref2) {
-  var children = _ref2.children,
-      restProps = _objectWithoutProperties(_ref2, ["children"]);
-
+Form.FormSubmit = function FormFormSubmit({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_form.FormSubmit, restProps);
 };
 
-Form.Input = function FormInput(_ref3) {
-  var children = _ref3.children,
-      restProps = _objectWithoutProperties(_ref3, ["children"]);
-
+Form.Input = function FormInput({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_form.Input, restProps);
 };
 
-Form.ButtonSubmit = function FormButtonSubmit(_ref4) {
-  var children = _ref4.children,
-      restProps = _objectWithoutProperties(_ref4, ["children"]);
-
+Form.ButtonSubmit = function FormButtonSubmit({
+  children,
+  ...restProps
+}) {
   return /*#__PURE__*/_react.default.createElement(_form.ButtonSubmit, restProps, children);
 };
 },{"react":"node_modules/react/index.js","./styles/form":"src/components/form/styles/form.js"}],"src/components/index.js":[function(require,module,exports) {
@@ -36331,25 +36134,25 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function JobListContainer() {
-  var _useContext = (0, _react.useContext)(_context.Context),
-      state = _useContext.state;
-
-  var jobs = state.jobs,
-      loading = state.loading;
+  const {
+    state
+  } = (0, _react.useContext)(_context.Context);
+  const {
+    jobs,
+    loading
+  } = state;
   console.log(jobs);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading"), !loading && /*#__PURE__*/_react.default.createElement("div", null, jobs.map(function (job) {
-    return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: "/job/".concat(job.id),
-      key: job.id
-    }, /*#__PURE__*/_react.default.createElement(_components.JobList, {
-      key: job.id
-    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Image, {
-      src: job.company_logo,
-      alt: "Company logo"
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: "job"
-    }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, job.location), /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, new Date(job.created_at).toDateString())))));
-  })));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading"), !loading && /*#__PURE__*/_react.default.createElement("div", null, jobs.map(job => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: `/job/${job.id}`,
+    key: job.id
+  }, /*#__PURE__*/_react.default.createElement(_components.JobList, {
+    key: job.id
+  }, /*#__PURE__*/_react.default.createElement(_components.JobList.Image, {
+    src: job.company_logo,
+    alt: "Company logo"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "job"
+  }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, job.location), /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, new Date(job.created_at).toDateString()))))))));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js"}],"src/container/form.js":[function(require,module,exports) {
 "use strict";
@@ -36371,35 +36174,19 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function FormContainer() {
-  var _useContext = (0, _react.useContext)(_context.Context),
-      state = _useContext.state,
-      dispatch = _useContext.dispatch;
-
-  var jobs = state.jobs;
-
-  var _useState = (0, _react.useState)(""),
-      _useState2 = _slicedToArray(_useState, 2),
-      searchForJob = _useState2[0],
-      setSearchForJob = _useState2[1];
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_context.Context);
+  const {
+    jobs
+  } = state;
+  const [searchForJob, setSearchForJob] = (0, _react.useState)("");
 
   function searchForJobInput(e) {
     e.preventDefault();
-    var filteredJobByName = jobs.filter(function (job) {
-      return job.title.toLowerCase().includes(searchForJob);
-    });
+    const filteredJobByName = jobs.filter(job => job.title.toLowerCase().includes(searchForJob));
     dispatch({
       type: "SEARCH_JOB_BY_NAME",
       value: filteredJobByName
@@ -36413,9 +36200,7 @@ function FormContainer() {
     type: "text",
     placeholder: "Type the title of the job",
     value: searchForJob,
-    onChange: function onChange(e) {
-      return setSearchForJob(e.target.value);
-    }
+    onChange: e => setSearchForJob(e.target.value)
   }), /*#__PURE__*/_react.default.createElement(_components.Form.ButtonSubmit, null, "Search")));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js","../components/form/styles/form":"src/components/form/styles/form.js"}],"src/container/form-sidebar.js":[function(require,module,exports) {
@@ -36434,29 +36219,19 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function FormSidebarContainer() {
-  var _useContext = (0, _react.useContext)(_context.Context),
-      state = _useContext.state,
-      dispatch = _useContext.dispatch,
-      query = _useContext.query,
-      setQuery = _useContext.setQuery,
-      fetchData = _useContext.fetchData;
-
+  const {
+    state,
+    dispatch,
+    query,
+    setQuery,
+    fetchData
+  } = (0, _react.useContext)(_context.Context);
   console.log(query);
-  var jobs = state.jobs;
-  var cityList = [{
+  const {
+    jobs
+  } = state;
+  const cityList = [{
     id: 1612154414295,
     name: "London"
   }, {
@@ -36481,20 +36256,11 @@ function FormSidebarContainer() {
     fetchData();
   }
 
-  var _useState = (0, _react.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isChecked = _useState2[0],
-      setIsChecked = _useState2[1];
-
-  var _useState3 = (0, _react.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      location = _useState4[0],
-      setLocation = _useState4[1];
+  const [isChecked, setIsChecked] = (0, _react.useState)(false);
+  const [location, setLocation] = (0, _react.useState)("");
 
   function handleCheckboxLocation() {
-    var fullTimeJobs = jobs.filter(function (job) {
-      return job.type === "Full Time";
-    });
+    const fullTimeJobs = jobs.filter(job => job.type === "Full Time");
     setIsChecked(!isChecked);
     dispatch({
       type: "SEARCH_FULL_TIME_JOB",
@@ -36502,9 +36268,7 @@ function FormSidebarContainer() {
     });
   }
 
-  var searchByCityName = jobs.filter(function (job) {
-    return job.location.toLowerCase().includes(location);
-  });
+  const searchByCityName = jobs.filter(job => job.location.toLowerCase().includes(location));
 
   function handleSearchCityName(e) {
     setQuery(e.target.value);
@@ -36527,16 +36291,14 @@ function FormSidebarContainer() {
     placeholder: "Search by city",
     value: query,
     onChange: searchCity
-  }))), cityList.map(function (city) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: city.id
-    }, /*#__PURE__*/_react.default.createElement("input", {
-      type: "checkbox",
-      id: city.id,
-      value: city.name,
-      onClick: checkboxSearch
-    }), /*#__PURE__*/_react.default.createElement("label", null, city.name));
-  }));
+  }))), cityList.map(city => /*#__PURE__*/_react.default.createElement("div", {
+    key: city.id
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: city.id,
+    value: city.name,
+    onClick: checkboxSearch
+  }), /*#__PURE__*/_react.default.createElement("label", null, city.name))));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js"}],"src/container/job-details.js":[function(require,module,exports) {
 "use strict";
@@ -36557,18 +36319,17 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function JobDetails() {
-  var _useContext = (0, _react.useContext)(_context.Context),
-      state = _useContext.state,
-      dispatch = _useContext.dispatch;
-
-  var jobs = state.jobs;
-
-  var _useParams = (0, _reactRouterDom.useParams)(),
-      jobId = _useParams.jobId;
-
-  var job = jobs.find(function (job) {
-    return job.id === jobId;
-  });
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_context.Context);
+  const {
+    jobs
+  } = state;
+  const {
+    jobId
+  } = (0, _reactRouterDom.useParams)();
+  const job = jobs.find(job => job.id === jobId);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "job-description"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -36581,34 +36342,34 @@ function JobDetails() {
   }, "wes@kasisto.com"), " & CC ", /*#__PURE__*/_react.default.createElement("a", {
     href: "/eric"
   }, "eric@kasisto.com")))), /*#__PURE__*/_react.default.createElement("article", {
-    key: job === null || job === void 0 ? void 0 : job.id,
+    key: job?.id,
     className: "jobs-details"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "details-heading"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "title"
-  }, job === null || job === void 0 ? void 0 : job.title), /*#__PURE__*/_react.default.createElement("button", {
+  }, job?.title), /*#__PURE__*/_react.default.createElement("button", {
     className: "type"
-  }, job === null || job === void 0 ? void 0 : job.type)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", {
+  }, job?.type)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", {
     className: "date"
-  }, new Date(job === null || job === void 0 ? void 0 : job.created_at).toLocaleDateString()), /*#__PURE__*/_react.default.createElement("div", {
+  }, new Date(job?.created_at).toLocaleDateString()), /*#__PURE__*/_react.default.createElement("div", {
     className: "company"
   }, /*#__PURE__*/_react.default.createElement("img", {
     className: "company-logo",
-    src: job === null || job === void 0 ? void 0 : job.company_logo,
-    alt: job === null || job === void 0 ? void 0 : job.company
+    src: job?.company_logo,
+    alt: job?.company
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "company-info"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "company-name"
-  }, job === null || job === void 0 ? void 0 : job.company), /*#__PURE__*/_react.default.createElement("span", {
+  }, job?.company), /*#__PURE__*/_react.default.createElement("span", {
     className: "location"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "ri-earth-line"
-  }), job === null || job === void 0 ? void 0 : job.location))), /*#__PURE__*/_react.default.createElement("div", {
+  }), job?.location))), /*#__PURE__*/_react.default.createElement("div", {
     className: "description",
     dangerouslySetInnerHTML: {
-      __html: job === null || job === void 0 ? void 0 : job.description
+      __html: job?.description
     }
   })));
 }
@@ -36655,19 +36416,18 @@ exports.GlobalStyles = void 0;
 
 var _styledComponents = require("styled-components");
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    html, body {\n        font-family: 'Helvetica Neue', Helvetica, sans-serif;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: antialiased;\n        background-color: ghostwhite;\n        color: #333333;\n        font-size: 16px;\n        margin: 0;\n        padding: 1rem;\n    }\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var GlobalStyles = (0, _styledComponents.createGlobalStyle)(_templateObject());
+const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
+    html, body {
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+        background-color: ghostwhite;
+        color: #333333;
+        font-size: 16px;
+        margin: 0;
+        padding: 1rem;
+    }
+`;
 exports.GlobalStyles = GlobalStyles;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";

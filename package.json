@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/moro-patana/compound-component-github-jobs/issues"
   },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
   "homepage": "https://github.com/moro-patana/compound-component-github-jobs#readme",
   "dependencies": {
     "react": "^17.0.1",
