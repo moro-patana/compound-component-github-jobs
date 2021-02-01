@@ -35934,9 +35934,14 @@ const SubTitle = _styledComponents.default.h3`
 `;
 exports.SubTitle = SubTitle;
 const Button = _styledComponents.default.button`
- border: 1px solid black;
- padding: 1rem;
- background-color: transparent;
+ padding: 8px;
+    border: 1px solid #334680;
+    border-radius: 4px;
+    align-self: start;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #334680;
+    font-weight: 700;
 `;
 exports.Button = Button;
 const Span = _styledComponents.default.span`
