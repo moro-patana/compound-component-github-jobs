@@ -35920,12 +35920,17 @@ const History = _styledComponents.default.div`
 `;
 exports.History = History;
 const Title = _styledComponents.default.h2`
-font-size: 20px;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #334680;
+    font-weight: 700;
 `;
 exports.Title = Title;
 const SubTitle = _styledComponents.default.h3`
      margin: 0;
-    font-size: 20px;
+     font-size: 1.6rem;
+    line-height: 1.9rem;
+    color: #334680;
 `;
 exports.SubTitle = SubTitle;
 const Button = _styledComponents.default.button`
@@ -36089,7 +36094,92 @@ Form.ButtonSubmit = function FormButtonSubmit({
 }) {
   return /*#__PURE__*/_react.default.createElement(_form.ButtonSubmit, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/form":"src/components/form/styles/form.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/form":"src/components/form/styles/form.js"}],"src/components/form-sidebar/styles/form-sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Checkbox = exports.Label = exports.SearchCityInput = exports.Fieldset = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div``;
+exports.Container = Container;
+const Fieldset = _styledComponents.default.fieldset`
+    padding: 4px 5px 4px 17px;
+    height: 48px;
+    background-color: #fff;
+    border-radius: 4px;
+    max-width: 790px;
+    border: none;
+`;
+exports.Fieldset = Fieldset;
+const SearchCityInput = _styledComponents.default.input`
+margin-left: 10px;
+    margin-right: 24px;
+    padding: 0 4px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: #b9bdcf;
+`;
+exports.SearchCityInput = SearchCityInput;
+const Label = _styledComponents.default.label``;
+exports.Label = Label;
+const Checkbox = _styledComponents.default.input``;
+exports.Checkbox = Checkbox;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/form-sidebar/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormSidebar;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _formSidebar = require("./styles/form-sidebar");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FormSidebar({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_formSidebar.Container, restProps, children);
+}
+
+FormSidebar.SearchCityInput = function FormSidebarSearchCityInput({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_formSidebar.SearchCityInput, restProps, children);
+};
+
+FormSidebar.Fieldset = function FormSidebarFieldset({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_formSidebar.Fieldset, restProps, children);
+};
+
+FormSidebar.Checkbox = function FormSidebarCheckbox({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_formSidebar.Checkbox, restProps, children);
+};
+
+FormSidebar.Label = function FormSidebarLabel({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_formSidebar.Label, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/form-sidebar":"src/components/form-sidebar/styles/form-sidebar.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36107,13 +36197,21 @@ Object.defineProperty(exports, "Form", {
     return _form.default;
   }
 });
+Object.defineProperty(exports, "FormSidebar", {
+  enumerable: true,
+  get: function () {
+    return _formSidebar.default;
+  }
+});
 
 var _jobList = _interopRequireDefault(require("./job-list"));
 
 var _form = _interopRequireDefault(require("./form"));
 
+var _formSidebar = _interopRequireDefault(require("./form-sidebar"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./job-list":"src/components/job-list/index.js","./form":"src/components/form/index.js"}],"src/container/job-list.js":[function(require,module,exports) {
+},{"./job-list":"src/components/job-list/index.js","./form":"src/components/form/index.js","./form-sidebar":"src/components/form-sidebar/index.js"}],"src/container/job-list.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36215,6 +36313,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _context = require("../context/context");
 
+var _components = require("../components");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -36278,15 +36378,13 @@ function FormSidebarContainer() {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_components.FormSidebar, null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     checked: isChecked,
     onChange: handleCheckboxLocation
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time"))), /*#__PURE__*/_react.default.createElement("form", {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time"))), /*#__PURE__*/_react.default.createElement(_components.FormSidebar, {
     className: "search-city"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("i", {
-    className: "ri-earth-line"
-  }), /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(_components.FormSidebar.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.FormSidebar.SearchCityInput, {
     type: "text",
     placeholder: "Search by city",
     value: query,
@@ -36300,7 +36398,7 @@ function FormSidebarContainer() {
     onClick: checkboxSearch
   }), /*#__PURE__*/_react.default.createElement("label", null, city.name))));
 }
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js"}],"src/container/job-details.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/container/job-details.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
