@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     html, body {
-        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        font-family: 'Roboto', Helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: antialiased;
         background-color: ghostwhite;
@@ -10,5 +10,11 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 16px;
         margin: 0;
         padding: 1rem;
+    }
+    a {
+        text-decoration: none;
+    }
+    li {
+        list-style: none;
     }
 `;

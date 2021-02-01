@@ -36516,7 +36516,7 @@ var _styledComponents = require("styled-components");
 
 const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
     html, body {
-        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        font-family: 'Roboto', Helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: antialiased;
         background-color: ghostwhite;
@@ -36524,6 +36524,12 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         font-size: 16px;
         margin: 0;
         padding: 1rem;
+    }
+    a {
+        text-decoration: none;
+    }
+    li {
+        list-style: none;
     }
 `;
 exports.GlobalStyles = GlobalStyles;
