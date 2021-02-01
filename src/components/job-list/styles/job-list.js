@@ -16,11 +16,16 @@ export const History = styled.div`
     justify-content: flex-end;
 `;
 export const Title = styled.h2`
-font-size: 20px;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #334680;
+    font-weight: 700;
 `;
 export const SubTitle = styled.h3`
      margin: 0;
-    font-size: 20px;
+     font-size: 1.6rem;
+    line-height: 1.9rem;
+    color: #334680;
 `;
 export const Button = styled.button`
  border: 1px solid black;
