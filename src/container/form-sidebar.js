@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react'
 import {Context} from "../context/context"
+import { FormSidebar } from "../components"
 
 export default function FormSidebarContainer() {
     const {state, dispatch, query, setQuery, fetchData} = useContext(Context)
@@ -50,7 +51,7 @@ export default function FormSidebarContainer() {
     }
     return (
         <>
-        <div>
+        <FormSidebar>
              <fieldset>
                <input 
                type="checkbox" 
@@ -58,19 +59,18 @@ export default function FormSidebarContainer() {
                onChange={handleCheckboxLocation}/>
                <label>Full time</label>
             </fieldset>
-        </div>
-        <form className="search-city">
+        </FormSidebar>
+        <FormSidebar className="search-city">
                 <label>Location</label>
-                <fieldset>
-                    <i className="ri-earth-line"></i>
-                    <input
+                <FormSidebar.Fieldset>
+                    <FormSidebar.SearchCityInput
                         type="text"
                         placeholder="Search by city"
                         value={query}
                         onChange={searchCity}
                     />
-                </fieldset>
-            </form>
+                </FormSidebar.Fieldset>
+            </FormSidebar>
             {cityList.map(city => (
                 <div key={city.id}>
                     <input 
