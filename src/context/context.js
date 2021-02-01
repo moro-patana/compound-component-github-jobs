@@ -1,7 +1,9 @@
-import React, {useReducer, useEffect} from 'react'
+import React, {useReducer, useEffect, useState} from 'react'
 const Context = React.createContext()
-const JOBS_API = " https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description"
+
 export default function ContextProvider({children}) {
+    const [query, setQuery] = useState("London")
+    const JOBS_API = ` https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location="${query}"`
     const [state, dispatch] = useReducer((state, action) => {
         switch (action.type) {
             case "FETCH_DATA": {
@@ -65,13 +67,17 @@ export default function ContextProvider({children}) {
         jobs: [],
         loading: true
     })
+
+    async function fetchData() {
+        const response = await fetch(JOBS_API)
+        const data = await response.json()
+        dispatch({ type: "FETCH_DATA", jobs: data })
+    }
     useEffect(() => {
-        fetch(JOBS_API)
-            .then(response => response.json())
-            .then(data => dispatch({ type: "FETCH_DATA", jobs: data }))
+        fetchData()
     }, []);
     return (
-        <Context.Provider value={{state, dispatch}}>
+        <Context.Provider value={{state, dispatch, query, setQuery, fetchData}}>
             {children}
         </Context.Provider>
     )
