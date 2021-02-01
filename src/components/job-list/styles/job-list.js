@@ -33,7 +33,10 @@ export const Button = styled.button`
  background-color: transparent;
 `;
 export const Span = styled.span`
-padding: 20px;
+    padding: 20px;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #b9bdcf;
 `;
 export const Image = styled.img`
 width: 100%;

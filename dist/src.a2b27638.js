@@ -35940,7 +35940,10 @@ const Button = _styledComponents.default.button`
 `;
 exports.Button = Button;
 const Span = _styledComponents.default.span`
-padding: 20px;
+    padding: 20px;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #b9bdcf;
 `;
 exports.Span = Span;
 const Image = _styledComponents.default.img`
