@@ -2,8 +2,39 @@ import React, {useContext, useState} from 'react'
 import {Context} from "../context/context"
 
 export default function FormSidebarContainer() {
-    const {state, dispatch} = useContext(Context)
+    const {state, dispatch, query, setQuery, fetchData} = useContext(Context)
+    console.log(query);
     const {jobs} = state;
+    
+
+    const cityList = [
+        {
+            id: 1612154414295,
+            name: "London"
+        },
+        {
+            id: 1612154414296,
+            name: "Amsterdam"
+        },
+        {
+            id: 1612154414292,
+            name: "New York"
+        },
+        {
+            id: 1612154414287,
+            name: "Berlin"
+        },
+    ]
+    function searchCity(e) {
+        setQuery(e.target.value);
+        fetchData()
+    }
+    function checkboxSearch(e, id) {
+            console.log(e.target.id);
+            setQuery(e.target.value)
+            fetchData()
+
+    }
     const [isChecked, setIsChecked] = useState(false);
     const [location, setLocation] = useState("")
 
@@ -14,7 +45,7 @@ export default function FormSidebarContainer() {
     }
     const searchByCityName = jobs.filter(job => job.location.toLowerCase().includes(location))
     function handleSearchCityName(e) {
-        setLocation(e.target.value)
+        setQuery(e.target.value)
         dispatch({ type: "SEARCH_BY_CITYNAME", value: searchByCityName })
     }
     return (
@@ -35,11 +66,23 @@ export default function FormSidebarContainer() {
                     <input
                         type="text"
                         placeholder="Search by city"
-                        value={location}
-                        onChange={handleSearchCityName}
+                        value={query}
+                        onChange={searchCity}
                     />
                 </fieldset>
             </form>
+            {cityList.map(city => (
+                <div key={city.id}>
+                    <input 
+                    type="checkbox"
+                    id={city.id}
+                    value={city.name}
+                    onClick={checkboxSearch}
+
+                    />
+                    <label>{city.name}</label>
+                </div>
+            ))}
         </>
     )
 }

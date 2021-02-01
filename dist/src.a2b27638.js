@@ -36449,9 +36449,37 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function FormSidebarContainer() {
   var _useContext = (0, _react.useContext)(_context.Context),
       state = _useContext.state,
-      dispatch = _useContext.dispatch;
+      dispatch = _useContext.dispatch,
+      query = _useContext.query,
+      setQuery = _useContext.setQuery,
+      fetchData = _useContext.fetchData;
 
+  console.log(query);
   var jobs = state.jobs;
+  var cityList = [{
+    id: 1612154414295,
+    name: "London"
+  }, {
+    id: 1612154414296,
+    name: "Amsterdam"
+  }, {
+    id: 1612154414292,
+    name: "New York"
+  }, {
+    id: 1612154414287,
+    name: "Berlin"
+  }];
+
+  function searchCity(e) {
+    setQuery(e.target.value);
+    fetchData();
+  }
+
+  function checkboxSearch(e, id) {
+    console.log(e.target.id);
+    setQuery(e.target.value);
+    fetchData();
+  }
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -36479,7 +36507,7 @@ function FormSidebarContainer() {
   });
 
   function handleSearchCityName(e) {
-    setLocation(e.target.value);
+    setQuery(e.target.value);
     dispatch({
       type: "SEARCH_BY_CITYNAME",
       value: searchByCityName
@@ -36497,9 +36525,18 @@ function FormSidebarContainer() {
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Search by city",
-    value: location,
-    onChange: handleSearchCityName
-  }))));
+    value: query,
+    onChange: searchCity
+  }))), cityList.map(function (city) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: city.id
+    }, /*#__PURE__*/_react.default.createElement("input", {
+      type: "checkbox",
+      id: city.id,
+      value: city.name,
+      onClick: checkboxSearch
+    }), /*#__PURE__*/_react.default.createElement("label", null, city.name));
+  }));
 }
 },{"react":"node_modules/react/index.js","../context/context":"src/context/context.js"}],"src/container/job-details.js":[function(require,module,exports) {
 "use strict";
