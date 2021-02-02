@@ -35890,71 +35890,332 @@ exports.ServerStyleSheet = Ue;
 "production" !== "development" && "undefined" != typeof navigator && "ReactNative" === navigator.product && console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), "production" !== "development" && "test" !== "development" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, 1 === window["__styled-components-init__"] && console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."), window["__styled-components-init__"] += 1);
 var _default = qe;
 exports.default = _default;
-},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"src/components/job-list/styles/job-list.js":[function(require,module,exports) {
+},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"src/components/header/styles/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Image = exports.Span = exports.Button = exports.SubTitle = exports.Title = exports.History = exports.Container = void 0;
+exports.SubmitButton = exports.Input = exports.Form = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.article`
-    padding: 1rem;
+const Container = _styledComponents.default.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/img/backgroundImg.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    border-radius: 8px;
+    height: 138px;
+    margin: 32px auto 0;
+    padding: 0 18px;
+
+    @media (min-width: 1114px) {
+        max-width: 1114px;
+        margin: 0 auto;
+    }
+`;
+exports.Container = Container;
+const Form = _styledComponents.default.form`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    padding: 14px 5px 14px 17px;
+    height: 48px;
+    background-color: #fff;
+    border-radius: 4px;
+    max-width: 790px;
+`; // export const Form = styled.form``;
+
+exports.Form = Form;
+const Input = _styledComponents.default.input`
+    margin-left: 10px;
+    margin-right: 24px;
+    padding: 0 4px;
+    height: 32px;
+    border: none;
+    background: transparent;
+
+    &:focus {
+        border: 2px solid blue;
+    }
+    &::placeholder {
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        color: #b9bdcf;
+    }
+`;
+exports.Input = Input;
+const SubmitButton = _styledComponents.default.button`
+    color: #fff;
+    background-color: #1e86ff;
+    transition: opacity .2s;
+    padding: 14px 27px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+
+`;
+exports.SubmitButton = SubmitButton;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/header/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Header;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _header = require("./styles/header");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_header.Container, restProps, children);
+}
+
+Header.Frame = function HeaderFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_header.Frame, restProps, children);
+};
+
+Header.Form = function HeaderForm({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_header.Form, restProps, children);
+};
+
+Header.Input = function HeaderInput({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_header.Input, restProps, children);
+};
+
+Header.SubmitButton = function HeaderSubmitButton({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_header.SubmitButton, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/header":"src/components/header/styles/header.js"}],"src/components/sidebar/styles/sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FullTimeJobInput = exports.SelectCityInput = exports.Location = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div``;
+exports.Container = Container;
+const Location = _styledComponents.default.div`
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+
+  label {
+    display: block;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    line-height: 2.1rem;
+    font-weight: 700;
+    color: #b9bdcf;
+    margin-top: 32px;
+    margin-bottom: 14px;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 4px 5px 4px 17px;
+    height: 48px;
+    background-color: #fff;
+    border-radius: 4px;
+    max-width: 790px;
+  }
+  input {
+    font-family: "Roboto",sans-serif;
+    margin-left: 10px;
+    margin-right: 24px;
+    padding: 0 4px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #b9bdcf;
+  }
+  img {
+      width: 24px;
+      height: 24px;
+  }
+`;
+exports.Location = Location;
+const SelectCityInput = _styledComponents.default.div`
+margin-top: 25px;
+  div {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+  }
+  input {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+  }
+  label {
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: #334680;
+  }
+`;
+exports.SelectCityInput = SelectCityInput;
+const FullTimeJobInput = _styledComponents.default.fieldset`
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    border: none;
+    padding-left: 0;
+
+    input {
+        width: 18px;
+        height: 18px;
+        margin-right: 12px;
+    }
+    label {
+        font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: #334680;
+    }
+`;
+exports.FullTimeJobInput = FullTimeJobInput;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/sidebar/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SideBar;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _sidebar = require("./styles/sidebar");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SideBar({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_sidebar.Container, restProps, children);
+}
+
+SideBar.FullTimeJobInput = function SideBarFullTimeJobInput({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_sidebar.FullTimeJobInput, restProps, children);
+};
+
+SideBar.Location = function SideBarLocation({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_sidebar.Location, restProps, children);
+};
+
+SideBar.SelectCityInput = function SideBarSelectCityInput({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_sidebar.SelectCityInput, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/sidebar":"src/components/sidebar/styles/sidebar.js"}],"src/components/job-list/styles/job-list.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.History = exports.Span = exports.Image = exports.Button = exports.SubTitle = exports.Title = exports.Frame = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div`
+
+`;
+exports.Container = Container;
+const Frame = _styledComponents.default.div`
     display: grid;
     grid-template-columns: 20% 70%;
     column-gap: 30px;
+    align-items: center;
+    padding: 12px;
     background: #fff;
     box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
     border-radius: 4px;
-    margin-bottom: 30px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: box-shadow .2s;
 `;
-exports.Container = Container;
+exports.Frame = Frame;
+const Title = _styledComponents.default.h2`
+    font-size: 18px;
+    color: #334680;
+`;
+exports.Title = Title;
+const SubTitle = _styledComponents.default.h3`
+font-size: 24px;
+    color: #334680;
+`;
+exports.SubTitle = SubTitle;
+const Button = _styledComponents.default.button`
+padding: 8px;
+color: #334680;
+font-size: 16px;
+`;
+exports.Button = Button;
+const Image = _styledComponents.default.img`
+width: 100%;
+`;
+exports.Image = Image;
+const Span = _styledComponents.default.span`
+color: #b9bdcf;
+font-size: 16px;
+`;
+exports.Span = Span;
 const History = _styledComponents.default.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 `;
 exports.History = History;
-const Title = _styledComponents.default.h2`
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-    color: #334680;
-    font-weight: 700;
-`;
-exports.Title = Title;
-const SubTitle = _styledComponents.default.h3`
-     margin: 0;
-     font-size: 1.6rem;
-    line-height: 1.9rem;
-    color: #334680;
-`;
-exports.SubTitle = SubTitle;
-const Button = _styledComponents.default.button`
- padding: 8px;
-    border: 1px solid #334680;
-    border-radius: 4px;
-    align-self: start;
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-    color: #334680;
-    font-weight: 700;
-`;
-exports.Button = Button;
-const Span = _styledComponents.default.span`
-    padding: 20px;
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-    color: #b9bdcf;
-`;
-exports.Span = Span;
-const Image = _styledComponents.default.img`
-width: 100%;
-`;
-exports.Image = Image;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/job-list/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -35975,6 +36236,13 @@ function JobList({
 }) {
   return /*#__PURE__*/_react.default.createElement(_jobList.Container, restProps, children);
 }
+
+JobList.Frame = function JobListFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobList.Frame, restProps, children);
+};
 
 JobList.Title = function JobListTitle({
   children,
@@ -36015,183 +36283,221 @@ JobList.History = function JobListHistory({
 }) {
   return /*#__PURE__*/_react.default.createElement(_jobList.History, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/form/styles/form.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/job-list":"src/components/job-list/styles/job-list.js"}],"src/components/job-details/styles/job-details.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonSubmit = exports.Input = exports.FormSubmit = exports.Container = void 0;
+exports.TitleFrame = exports.LogoFrame = exports.Span = exports.Button = exports.SubTitle = exports.Title = exports.Heading = exports.Image = exports.Link = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-background-image: url("/img/backgroundImg.png");
-background-repeat: no-repeat;
-padding: 60px;
-margin-bottom: 50px;
-border-radius: 10px;
-`;
-exports.Container = Container;
-const FormSubmit = _styledComponents.default.form`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-padding: 1rem;
-background-color: white;
-`;
-exports.FormSubmit = FormSubmit;
-const Input = _styledComponents.default.input`
-    padding: 10px;
-    background-color: ghostwhite;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-`;
-exports.Input = Input;
-const ButtonSubmit = _styledComponents.default.button`
-    color: #fff;
-    background-color: #1e86ff;
-    transition: opacity .2s;
-    border: none;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 18px;
-`;
-exports.ButtonSubmit = ButtonSubmit;
-},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/form/index.js":[function(require,module,exports) {
-"use strict";
+display: block;
+font-family: "Roboto";
+font-size: 15px;
+color: #334680;
+line-height: 30px;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = Form;
+  ul {
+      padding-left: 0;
+  }
 
-var _react = _interopRequireDefault(require("react"));
-
-var _form = require("./styles/form");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Form({
-  children,
-  ...restProps
-}) {
-  return /*#__PURE__*/_react.default.createElement(_form.Container, restProps, children);
+@media (min-width: 1114px) {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    column-gap: 200px;
+    max-width: 1114px;
+    margin: 50px;
 }
-
-Form.FormSubmit = function FormFormSubmit({
-  children,
-  ...restProps
-}) {
-  return /*#__PURE__*/_react.default.createElement(_form.FormSubmit, restProps);
-};
-
-Form.Input = function FormInput({
-  children,
-  ...restProps
-}) {
-  return /*#__PURE__*/_react.default.createElement(_form.Input, restProps);
-};
-
-Form.ButtonSubmit = function FormButtonSubmit({
-  children,
-  ...restProps
-}) {
-  return /*#__PURE__*/_react.default.createElement(_form.ButtonSubmit, restProps, children);
-};
-},{"react":"node_modules/react/index.js","./styles/form":"src/components/form/styles/form.js"}],"src/components/form-sidebar/styles/form-sidebar.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Checkbox = exports.Label = exports.SearchCityInput = exports.Fieldset = exports.Container = void 0;
-
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const Container = _styledComponents.default.div``;
-exports.Container = Container;
-const Fieldset = _styledComponents.default.fieldset`
-    padding: 4px 5px 4px 17px;
-    height: 48px;
-    background-color: #fff;
-    border-radius: 4px;
-    max-width: 790px;
-    border: none;
 `;
-exports.Fieldset = Fieldset;
-const SearchCityInput = _styledComponents.default.input`
-margin-left: 10px;
-    margin-right: 24px;
-    padding: 0 4px;
-    height: 32px;
-    border: none;
-    background: transparent;
+exports.Container = Container;
+const Link = _styledComponents.default.a`
+    font-size: 14px;
+    color: #1e86ff;
+`;
+exports.Link = Link;
+const Image = _styledComponents.default.img`
+width: 100%;
+`;
+exports.Image = Image;
+const Heading = _styledComponents.default.h2`
     color: #b9bdcf;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    margin-top: 36px;
 `;
-exports.SearchCityInput = SearchCityInput;
-const Label = _styledComponents.default.label``;
-exports.Label = Label;
-const Checkbox = _styledComponents.default.input``;
-exports.Checkbox = Checkbox;
-},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/form-sidebar/index.js":[function(require,module,exports) {
+exports.Heading = Heading;
+const Title = _styledComponents.default.h3`
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    margin-bottom: 4px;
+    color: #334680;
+    margin-top: 0;
+    padding-right: 30px;
+`;
+exports.Title = Title;
+const SubTitle = _styledComponents.default.h4`
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #334680;
+    padding: 10px;
+    margin: 0;
+
+`;
+exports.SubTitle = SubTitle;
+const Button = _styledComponents.default.button`
+    padding: 8px;
+    border: 1px solid #334680;
+    border-radius: 4px;
+    align-self: start;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #334680;
+    font-weight: 700;
+`;
+exports.Button = Button;
+const Span = _styledComponents.default.span`
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #b9bdcf;
+    padding: 10px;
+`;
+exports.Span = Span;
+const LogoFrame = _styledComponents.default.div`
+    display: grid;
+    grid-template-columns: 100px 300px;
+    column-gap: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    align-items: center;
+`;
+exports.LogoFrame = LogoFrame;
+const TitleFrame = _styledComponents.default.div`
+display: flex;
+flex-direction: column;
+
+@media (min-width: 1114px) {
+    flex-direction: row;
+    align-items: center;
+}
+`;
+exports.TitleFrame = TitleFrame;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/job-details/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = FormSidebar;
+exports.default = JobDetails;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _formSidebar = require("./styles/form-sidebar");
+var _jobDetails = require("./styles/job-details");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function FormSidebar({
+function JobDetails({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_formSidebar.Container, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Container, restProps, children);
 }
 
-FormSidebar.SearchCityInput = function FormSidebarSearchCityInput({
+JobDetails.Frame = function JobDetailsFrame({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_formSidebar.SearchCityInput, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Frame, restProps, children);
 };
 
-FormSidebar.Fieldset = function FormSidebarFieldset({
+JobDetails.Link = function JobDetailsLink({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_formSidebar.Fieldset, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Link, restProps, children);
 };
 
-FormSidebar.Checkbox = function FormSidebarCheckbox({
+JobDetails.Heading = function JobDetailsHeading({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_formSidebar.Checkbox, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Heading, restProps, children);
 };
 
-FormSidebar.Label = function FormSidebarLabel({
+JobDetails.SubTitle = function JobDetailsSubTitle({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_formSidebar.Label, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.SubTitle, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/form-sidebar":"src/components/form-sidebar/styles/form-sidebar.js"}],"src/components/index.js":[function(require,module,exports) {
+
+JobDetails.Title = function JobDetailsTitle({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Title, restProps, children);
+};
+
+JobDetails.Button = function JobDetailsButton({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Button, restProps, children);
+};
+
+JobDetails.Span = function JobDetailsSpan({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Span, restProps, children);
+};
+
+JobDetails.Image = function JobDetailsImage({ ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.Image, restProps);
+};
+
+JobDetails.LogoFrame = function JobDetailsLogoFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.LogoFrame, restProps, children);
+};
+
+JobDetails.TitleFrame = function JobDetailsTitleFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_jobDetails.TitleFrame, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/job-details":"src/components/job-details/styles/job-details.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
+});
+Object.defineProperty(exports, "Header", {
+  enumerable: true,
+  get: function () {
+    return _header.default;
+  }
+});
+Object.defineProperty(exports, "SideBar", {
+  enumerable: true,
+  get: function () {
+    return _sidebar.default;
+  }
 });
 Object.defineProperty(exports, "JobList", {
   enumerable: true,
@@ -36199,74 +36505,29 @@ Object.defineProperty(exports, "JobList", {
     return _jobList.default;
   }
 });
-Object.defineProperty(exports, "Form", {
+Object.defineProperty(exports, "JobDetails", {
   enumerable: true,
   get: function () {
-    return _form.default;
+    return _jobDetails.default;
   }
 });
-Object.defineProperty(exports, "FormSidebar", {
-  enumerable: true,
-  get: function () {
-    return _formSidebar.default;
-  }
-});
+
+var _header = _interopRequireDefault(require("./header"));
+
+var _sidebar = _interopRequireDefault(require("./sidebar"));
 
 var _jobList = _interopRequireDefault(require("./job-list"));
 
-var _form = _interopRequireDefault(require("./form"));
-
-var _formSidebar = _interopRequireDefault(require("./form-sidebar"));
+var _jobDetails = _interopRequireDefault(require("./job-details"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./job-list":"src/components/job-list/index.js","./form":"src/components/form/index.js","./form-sidebar":"src/components/form-sidebar/index.js"}],"src/container/job-list.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./sidebar":"src/components/sidebar/index.js","./job-list":"src/components/job-list/index.js","./job-details":"src/components/job-details/index.js"}],"src/containers/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = JobListContainer;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _context = require("../context/context");
-
-var _reactRouterDom = require("react-router-dom");
-
-var _components = require("../components");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function JobListContainer() {
-  const {
-    state
-  } = (0, _react.useContext)(_context.Context);
-  const {
-    jobs,
-    loading
-  } = state;
-  console.log(jobs);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading"), !loading && /*#__PURE__*/_react.default.createElement("div", null, jobs.map(job => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: `/job/${job.id}`,
-    key: job.id
-  }, /*#__PURE__*/_react.default.createElement(_components.JobList, {
-    key: job.id
-  }, /*#__PURE__*/_react.default.createElement(_components.JobList.Image, {
-    src: job.company_logo,
-    alt: "Company logo"
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "job"
-  }, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, job.location), /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, new Date(job.created_at).toDateString()))))))));
-}
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js"}],"src/container/form.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = FormContainer;
+exports.default = HeaderContainer;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -36274,13 +36535,11 @@ var _context = require("../context/context");
 
 var _components = require("../components");
 
-var _form = require("../components/form/styles/form");
-
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function FormContainer() {
+function HeaderContainer() {
   const {
     state,
     dispatch
@@ -36300,22 +36559,22 @@ function FormContainer() {
     setSearchForJob("");
   }
 
-  return /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_form.FormSubmit, {
+  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Form, {
     onSubmit: searchForJobInput
-  }, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
+  }, /*#__PURE__*/_react.default.createElement(_components.Header.Input, {
     type: "text",
     placeholder: "Type the title of the job",
     value: searchForJob,
     onChange: e => setSearchForJob(e.target.value)
-  }), /*#__PURE__*/_react.default.createElement(_components.Form.ButtonSubmit, null, "Search")));
+  }), /*#__PURE__*/_react.default.createElement(_components.Header.SubmitButton, null, "Search")));
 }
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js","../components/form/styles/form":"src/components/form/styles/form.js"}],"src/container/form-sidebar.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/containers/sidebar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = FormSidebarContainer;
+exports.default = SideBarContainer;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -36327,7 +36586,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function FormSidebarContainer() {
+function SideBarContainer() {
   const {
     state,
     dispatch,
@@ -36386,27 +36645,62 @@ function FormSidebarContainer() {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_components.FormSidebar, null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+  return /*#__PURE__*/_react.default.createElement(_components.SideBar, null, /*#__PURE__*/_react.default.createElement(_components.SideBar.FullTimeJobInput, null, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     checked: isChecked,
     onChange: handleCheckboxLocation
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time"))), /*#__PURE__*/_react.default.createElement(_components.FormSidebar, {
-    className: "search-city"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(_components.FormSidebar.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.FormSidebar.SearchCityInput, {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement(_components.SideBar.Location, null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "/img/glob.svg"
+  }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Search by city",
     value: query,
     onChange: searchCity
-  }))), cityList.map(city => /*#__PURE__*/_react.default.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement(_components.SideBar.SelectCityInput, null, cityList.map(city => /*#__PURE__*/_react.default.createElement("div", {
     key: city.id
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     id: city.id,
     value: city.name,
     onClick: checkboxSearch
-  }), /*#__PURE__*/_react.default.createElement("label", null, city.name))));
+  }), /*#__PURE__*/_react.default.createElement("label", null, city.name)))));
 }
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/container/job-details.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/containers/job-list.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = JobListContainer;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _context = require("../context/context");
+
+var _components = require("../components");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function JobListContainer() {
+  const {
+    state
+  } = (0, _react.useContext)(_context.Context);
+  const {
+    jobs
+  } = state;
+  return /*#__PURE__*/_react.default.createElement(_components.JobList, null, jobs.map(job => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: `/job/${job.id}`,
+    key: job.id
+  }, /*#__PURE__*/_react.default.createElement(_components.JobList.Frame, null, /*#__PURE__*/_react.default.createElement(_components.JobList.Image, {
+    src: job.company_logo,
+    alt: "logo"
+  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_components.JobList.Title, null, job.company), /*#__PURE__*/_react.default.createElement(_components.JobList.SubTitle, null, job.title), /*#__PURE__*/_react.default.createElement(_components.JobList.Button, null, job.type), /*#__PURE__*/_react.default.createElement(_components.JobList.History, null, /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, job.location), /*#__PURE__*/_react.default.createElement(_components.JobList.Span, null, new Date(job.created_at).toDateString())))))));
+}
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../context/context":"src/context/context.js","../components":"src/components/index.js"}],"src/containers/job-details.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36420,11 +36714,13 @@ var _context = require("../context/context");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _components = require("../components");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function JobDetails() {
+function JobDetailsContainer() {
   const {
     state,
     dispatch
@@ -36436,41 +36732,23 @@ function JobDetails() {
     jobId
   } = (0, _reactRouterDom.useParams)();
   const job = jobs.find(job => job.id === jobId);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "job-description"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  return /*#__PURE__*/_react.default.createElement(_components.JobDetails, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     className: "back-to-search",
     to: "/"
-  }, "\u2B05Back to search"), /*#__PURE__*/_react.default.createElement("h2", null, "How to apply"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "address"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Please email a copy of your resume and online portfolio to ", /*#__PURE__*/_react.default.createElement("a", {
-    href: "/wes"
-  }, "wes@kasisto.com"), " & CC ", /*#__PURE__*/_react.default.createElement("a", {
-    href: "/eric"
-  }, "eric@kasisto.com")))), /*#__PURE__*/_react.default.createElement("article", {
+  }, "\u2B05Back to search"), /*#__PURE__*/_react.default.createElement(_components.JobDetails.Heading, null, "How to apply"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "address",
+    dangerouslySetInnerHTML: {
+      __html: job?.how_to_apply
+    }
+  })), /*#__PURE__*/_react.default.createElement("article", {
     key: job?.id,
     className: "jobs-details"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "details-heading"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "title"
-  }, job?.title), /*#__PURE__*/_react.default.createElement("button", {
-    className: "type"
-  }, job?.type)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", {
-    className: "date"
-  }, new Date(job?.created_at).toLocaleDateString()), /*#__PURE__*/_react.default.createElement("div", {
-    className: "company"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "company-logo",
+  }, /*#__PURE__*/_react.default.createElement(_components.JobDetails.TitleFrame, null, /*#__PURE__*/_react.default.createElement(_components.JobDetails.Title, null, job?.title), /*#__PURE__*/_react.default.createElement(_components.JobDetails.Button, null, job?.type)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_components.JobDetails.Span, null, new Date(job?.created_at).toLocaleDateString()), /*#__PURE__*/_react.default.createElement(_components.JobDetails.LogoFrame, null, /*#__PURE__*/_react.default.createElement(_components.JobDetails.Image, {
     src: job?.company_logo,
     alt: job?.company
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "company-info"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "company-name"
-  }, job?.company), /*#__PURE__*/_react.default.createElement("span", {
-    className: "location"
-  }, /*#__PURE__*/_react.default.createElement("i", {
+  }, /*#__PURE__*/_react.default.createElement(_components.JobDetails.SubTitle, null, job?.company), /*#__PURE__*/_react.default.createElement(_components.JobDetails.Span, null, /*#__PURE__*/_react.default.createElement("i", {
     className: "ri-earth-line"
   }), job?.location))), /*#__PURE__*/_react.default.createElement("div", {
     className: "description",
@@ -36480,9 +36758,9 @@ function JobDetails() {
   })));
 }
 
-var _default = JobDetails;
+var _default = JobDetailsContainer;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/context":"src/context/context.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36492,27 +36770,29 @@ exports.default = App;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _jobList = _interopRequireDefault(require("./container/job-list"));
+var _header = _interopRequireDefault(require("./containers/header"));
 
-var _form = _interopRequireDefault(require("./container/form"));
+var _sidebar = _interopRequireDefault(require("./containers/sidebar"));
 
-var _formSidebar = _interopRequireDefault(require("./container/form-sidebar"));
+var _jobList = _interopRequireDefault(require("./containers/job-list"));
 
 var _reactRouter = require("react-router");
 
-var _jobDetails = _interopRequireDefault(require("./container/job-details"));
+var _jobDetails = _interopRequireDefault(require("./containers/job-details"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_reactRouter.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github ", /*#__PURE__*/_react.default.createElement("span", null, "Jobs")), /*#__PURE__*/_react.default.createElement(_reactRouter.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     exact: true,
     path: "/"
-  }, /*#__PURE__*/_react.default.createElement(_form.default, null), /*#__PURE__*/_react.default.createElement(_formSidebar.default, null), /*#__PURE__*/_react.default.createElement(_jobList.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement(_sidebar.default, null), /*#__PURE__*/_react.default.createElement(_jobList.default, null))), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     path: "/job/:jobId"
   }, /*#__PURE__*/_react.default.createElement(_jobDetails.default, null))));
 }
-},{"react":"node_modules/react/index.js","./container/job-list":"src/container/job-list.js","./container/form":"src/container/form.js","./container/form-sidebar":"src/container/form-sidebar.js","react-router":"node_modules/react-router/esm/react-router.js","./container/job-details":"src/container/job-details.js"}],"src/global-styles.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./containers/header":"src/containers/header.js","./containers/sidebar":"src/containers/sidebar.js","./containers/job-list":"src/containers/job-list.js","react-router":"node_modules/react-router/esm/react-router.js","./containers/job-details":"src/containers/job-details.js"}],"src/global-styles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36535,9 +36815,38 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
     }
     a {
         text-decoration: none;
+        cursor: pointer;
+    }
+    button {
+        cursor: pointer;
     }
     li {
         list-style: none;
+    }
+    h1 {
+    font-family: "Poppins",sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    color: #282538;
+
+    span {
+        font-weight: 400;
+    }
+    }
+    @media (min-width: 1114px) {
+    .container {
+        display: grid;
+        grid-template-columns: 20% 77%;
+        column-gap: 50px;
+        padding-top: 40px;
+        max-width: 1114px;
+        margin: 0 auto;
+    }
+    h1 {
+        max-width: 1114px;
+        margin: 0 auto;
+        padding: 20px;
+    }
     }
 `;
 exports.GlobalStyles = GlobalStyles;
@@ -36587,7 +36896,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58510" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50927" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

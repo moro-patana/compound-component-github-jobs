@@ -1,6 +1,7 @@
 import React from "react"
 import {
     Container,
+    Frame,
     Title,
     SubTitle,
     Button,
@@ -16,6 +17,9 @@ export default function JobList({children, ...restProps}) {
         </Container>
     )
 }
+JobList.Frame = function JobListFrame({ children, ...restProps }) {
+	return <Frame {...restProps}>{children}</Frame>;
+};
 JobList.Title = function JobListTitle({ children, ...restProps }) {
 	return <Title {...restProps}>{children}</Title>;
 };

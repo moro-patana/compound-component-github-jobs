@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Context } from "../context/context"
-import { Form } from "../components"
-import { FormSubmit } from '../components/form/styles/form'
-export default function FormContainer() {
+import { Header } from "../components"
+
+export default function HeaderContainer() {
     const {state, dispatch} = useContext(Context)
     const {jobs} = state
     const [searchForJob, setSearchForJob] = useState("")
@@ -16,16 +16,16 @@ export default function FormContainer() {
     }
     
     return (
-        <Form>
-            <FormSubmit  onSubmit={searchForJobInput}>
-                <Form.Input
+        <Header>
+            <Header.Form  onSubmit={searchForJobInput}>
+                <Header.Input
                 type="text"
                 placeholder="Type the title of the job"
                 value={searchForJob}
                 onChange={(e) => setSearchForJob(e.target.value)}
                 />
-                <Form.ButtonSubmit>Search</Form.ButtonSubmit>
-            </FormSubmit>
-        </Form>
+                <Header.SubmitButton>Search</Header.SubmitButton>
+            </Header.Form>
+        </Header>
     )
 }

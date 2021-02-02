@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react'
 import {Context} from "../context/context"
-import { FormSidebar } from "../components"
+import { SideBar } from "../components"
 
-export default function FormSidebarContainer() {
+export default function SideBarContainer() {
     const {state, dispatch, query, setQuery, fetchData} = useContext(Context)
     console.log(query);
     const {jobs} = state;
@@ -50,28 +50,28 @@ export default function FormSidebarContainer() {
         dispatch({ type: "SEARCH_BY_CITYNAME", value: searchByCityName })
     }
     return (
-        <>
-        <FormSidebar>
-             <fieldset>
-               <input 
-               type="checkbox" 
-               checked={isChecked}
-               onChange={handleCheckboxLocation}/>
-               <label>Full time</label>
-            </fieldset>
-        </FormSidebar>
-        <FormSidebar className="search-city">
-                <label>Location</label>
-                <FormSidebar.Fieldset>
-                    <FormSidebar.SearchCityInput
+        <SideBar>
+            <SideBar.FullTimeJobInput>
+                <input 
+                type="checkbox" 
+                checked={isChecked}
+                onChange={handleCheckboxLocation}/>
+                <label>Full time</label>
+            </SideBar.FullTimeJobInput>
+            <SideBar.Location>
+            <label>Location</label>
+                <form>
+                    <img src="/img/glob.svg"/>
+                <input
                         type="text"
                         placeholder="Search by city"
                         value={query}
                         onChange={searchCity}
                     />
-                </FormSidebar.Fieldset>
-            </FormSidebar>
-            {cityList.map(city => (
+                </form>
+                </SideBar.Location>
+                <SideBar.SelectCityInput>
+                {cityList.map(city => (
                 <div key={city.id}>
                     <input 
                     type="checkbox"
@@ -83,6 +83,8 @@ export default function FormSidebarContainer() {
                     <label>{city.name}</label>
                 </div>
             ))}
-        </>
+                </SideBar.SelectCityInput>
+
+        </SideBar>
     )
 }
