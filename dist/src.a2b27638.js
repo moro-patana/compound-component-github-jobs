@@ -36640,15 +36640,6 @@ function SideBarContainer() {
   }
 
   const searchByCityName = jobs.filter(job => job.location.toLowerCase().includes(location));
-
-  function handleSearchCityName(e) {
-    setQuery(e.target.value);
-    dispatch({
-      type: "SEARCH_BY_CITYNAME",
-      value: searchByCityName
-    });
-  }
-
   return /*#__PURE__*/_react.default.createElement(_components.SideBar, null, /*#__PURE__*/_react.default.createElement(_components.SideBar.FullTimeJobInput, null, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     checked: isChecked,

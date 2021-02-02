@@ -45,10 +45,7 @@ export default function SideBarContainer() {
         dispatch({type:"SEARCH_FULL_TIME_JOB", value: fullTimeJobs})
     }
     const searchByCityName = jobs.filter(job => job.location.toLowerCase().includes(location))
-    function handleSearchCityName(e) {
-        setQuery(e.target.value)
-        dispatch({ type: "SEARCH_BY_CITYNAME", value: searchByCityName })
-    }
+
     return (
         <SideBar>
             <SideBar.FullTimeJobInput>
