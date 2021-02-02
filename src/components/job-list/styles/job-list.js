@@ -34,6 +34,7 @@ width: 100%;
 export const Span = styled.span`
 color: #b9bdcf;
 font-size: 16px;
+padding: 10px;
 `;
 export const History = styled.div`
     display: flex;

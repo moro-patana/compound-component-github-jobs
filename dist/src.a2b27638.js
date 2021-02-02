@@ -36212,6 +36212,7 @@ exports.Image = Image;
 const Span = _styledComponents.default.span`
 color: #b9bdcf;
 font-size: 16px;
+padding: 10px;
 `;
 exports.Span = Span;
 const History = _styledComponents.default.div`
