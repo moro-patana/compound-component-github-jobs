@@ -36065,6 +36065,10 @@ flex-direction: column;
     font-size: 1.2rem;
     line-height: 1.4rem;
     color: #b9bdcf;
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
   img {
       width: 24px;
