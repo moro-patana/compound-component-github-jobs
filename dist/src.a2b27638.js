@@ -33876,7 +33876,7 @@ function ContextProvider({
   children
 }) {
   const [query, setQuery] = (0, _react.useState)("London");
-  const JOBS_API = ` https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location="${query}"`;
+  const JOBS_API = ` https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions?location="${query}"`;
   const [state, dispatch] = (0, _react.useReducer)((state, action) => {
     switch (action.type) {
       case "FETCH_DATA":

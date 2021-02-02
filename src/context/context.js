@@ -3,7 +3,7 @@ const Context = React.createContext()
 
 export default function ContextProvider({children}) {
     const [query, setQuery] = useState("London")
-    const JOBS_API = ` https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location="${query}"`
+    const JOBS_API = ` https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions?location="${query}"`
     const [state, dispatch] = useReducer((state, action) => {
         switch (action.type) {
             case "FETCH_DATA": {
